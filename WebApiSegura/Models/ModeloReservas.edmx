@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RESERVAS_ULACIT_SWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ERR_CODIGO" />
+          </Key>
+          <Property Name="ERR_CODIGO" Type="int" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ERR_FEC_HORA" Type="datetime" Nullable="false" />
+          <Property Name="ERR_FUENTE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ERR_NUMERO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ERR_DESCRIPCION" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ERR_VISTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ERR_ACCION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estadistica">
+          <Key>
+            <PropertyRef Name="EST_CODIGO" />
+          </Key>
+          <Property Name="EST_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="EST_FEC_HORA" Type="datetime" Nullable="false" />
+          <Property Name="EST_NAVEGADOR" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EST_PLATAFORMA_DISPOSITIVO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EST_FABRICANTE_DISPOSITIVO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EST_VISTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EST_ACCION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="HAB_CODIGO" />
+          </Key>
+          <Property Name="HAB_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HOT_CODIGO" Type="int" Nullable="false" />
+          <Property Name="HAB_NUMERO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HAB_CAPACIDAD" Type="int" Nullable="false" />
+          <Property Name="HAB_TIPO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HAB_DESCRIPCION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="HAB_ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="HAB_PRECIO" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HOT_CODIGO" />
+          </Key>
+          <Property Name="HOT_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HOT_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HOT_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HOT_DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HOT_TELEFONO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HOT_CATEGORIA" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="RES_CODIGO" />
+          </Key>
+          <Property Name="RES_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="HAB_CODIGO" Type="int" Nullable="false" />
+          <Property Name="RES_FECHA_INGRESO" Type="datetime" Nullable="false" />
+          <Property Name="RES_FECHA_SALIDA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sesion">
+          <Key>
+            <PropertyRef Name="SES_CODIGO" />
+          </Key>
+          <Property Name="SES_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="SES_FEC_HORA_INICIO" Type="datetime" Nullable="false" />
+          <Property Name="SES_FEC_HORA_FIN" Type="datetime" Nullable="false" />
+          <Property Name="SES_ESTADO" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="USU_CODIGO" />
+          </Key>
+          <Property Name="USU_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_IDENTIFICACION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="USU_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USU_PASSWORD" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="USU_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USU_ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USU_FEC_NAC" Type="datetime" Nullable="false" />
+          <Property Name="USU_TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Error_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Error" Type="Self.Error" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Error">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estadistica_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Estadistica" Type="Self.Estadistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Estadistica">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Habitacion_Hotel">
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HOT_CODIGO" />
+            </Principal>
+            <Dependent Role="Habitacion">
+              <PropertyRef Name="HOT_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Habitacion">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="HAB_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="HAB_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sesion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Sesion" Type="Self.Sesion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Sesion">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RESERVAS_ULACIT_SWModelStoreContainer">
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estadistica" EntityType="Self.Estadistica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitacion" EntityType="Self.Habitacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sesion" EntityType="Self.Sesion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Error_Usuario" Association="Self.FK_Error_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Error" EntitySet="Error" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estadistica_Usuario" Association="Self.FK_Estadistica_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estadistica" EntitySet="Estadistica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Habitacion_Hotel" Association="Self.FK_Habitacion_Hotel">
+            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="Habitacion" EntitySet="Habitacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Habitacion" Association="Self.FK_Reserva_Habitacion">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Usuario" Association="Self.FK_Reserva_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sesion_Usuario" Association="Self.FK_Sesion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Sesion" EntitySet="Sesion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RESERVAS_ULACIT_SWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ERR_CODIGO" />
+          </Key>
+          <Property Name="ERR_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ERR_FEC_HORA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ERR_FUENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ERR_NUMERO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ERR_DESCRIPCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ERR_VISTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ERR_ACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Error_Usuario" FromRole="Error" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Estadistica">
+          <Key>
+            <PropertyRef Name="EST_CODIGO" />
+          </Key>
+          <Property Name="EST_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="EST_FEC_HORA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EST_NAVEGADOR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_PLATAFORMA_DISPOSITIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_FABRICANTE_DISPOSITIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_VISTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_ACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Estadistica_Usuario" FromRole="Estadistica" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="HAB_CODIGO" />
+          </Key>
+          <Property Name="HAB_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOT_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="HAB_NUMERO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HAB_CAPACIDAD" Type="Int32" Nullable="false" />
+          <Property Name="HAB_TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HAB_DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HAB_ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HAB_PRECIO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Hotel" Relationship="Self.FK_Habitacion_Hotel" FromRole="Habitacion" ToRole="Hotel" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK_Reserva_Habitacion" FromRole="Habitacion" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HOT_CODIGO" />
+          </Key>
+          <Property Name="HOT_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOT_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOT_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOT_DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOT_TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOT_CATEGORIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Habitacion" Relationship="Self.FK_Habitacion_Hotel" FromRole="Hotel" ToRole="Habitacion" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="RES_CODIGO" />
+          </Key>
+          <Property Name="RES_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="HAB_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="RES_FECHA_INGRESO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RES_FECHA_SALIDA" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Habitacion" Relationship="Self.FK_Reserva_Habitacion" FromRole="Reserva" ToRole="Habitacion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Reserva_Usuario" FromRole="Reserva" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Sesion">
+          <Key>
+            <PropertyRef Name="SES_CODIGO" />
+          </Key>
+          <Property Name="SES_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="SES_FEC_HORA_INICIO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SES_FEC_HORA_FIN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SES_ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Sesion_Usuario" FromRole="Sesion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="USU_CODIGO" />
+          </Key>
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_IDENTIFICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USU_FEC_NAC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USU_TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Error" Relationship="Self.FK_Error_Usuario" FromRole="Usuario" ToRole="Error" />
+          <NavigationProperty Name="Estadistica" Relationship="Self.FK_Estadistica_Usuario" FromRole="Usuario" ToRole="Estadistica" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK_Reserva_Usuario" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Sesion" Relationship="Self.FK_Sesion_Usuario" FromRole="Usuario" ToRole="Sesion" />
+        </EntityType>
+        <Association Name="FK_Error_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Error" Type="Self.Error" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Error">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estadistica_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Estadistica" Type="Self.Estadistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Estadistica">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Habitacion_Hotel">
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HOT_CODIGO" />
+            </Principal>
+            <Dependent Role="Habitacion">
+              <PropertyRef Name="HOT_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Habitacion">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="HAB_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="HAB_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sesion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Sesion" Type="Self.Sesion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Sesion">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RESERVAS_ULACIT_SWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Error" EntityType="Self.Error" />
+          <EntitySet Name="Estadistica" EntityType="Self.Estadistica" />
+          <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" />
+          <EntitySet Name="Sesion" EntityType="Self.Sesion" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Error_Usuario" Association="Self.FK_Error_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Error" EntitySet="Error" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estadistica_Usuario" Association="Self.FK_Estadistica_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estadistica" EntitySet="Estadistica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Habitacion_Hotel" Association="Self.FK_Habitacion_Hotel">
+            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="Habitacion" EntitySet="Habitacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Habitacion" Association="Self.FK_Reserva_Habitacion">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Usuario" Association="Self.FK_Reserva_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sesion_Usuario" Association="Self.FK_Sesion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Sesion" EntitySet="Sesion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RESERVAS_ULACIT_SWModelStoreContainer" CdmEntityContainer="RESERVAS_ULACIT_SWEntities">
+          <EntitySetMapping Name="Error">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="ERR_CODIGO" ColumnName="ERR_CODIGO" />
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="ERR_FEC_HORA" ColumnName="ERR_FEC_HORA" />
+                <ScalarProperty Name="ERR_FUENTE" ColumnName="ERR_FUENTE" />
+                <ScalarProperty Name="ERR_NUMERO" ColumnName="ERR_NUMERO" />
+                <ScalarProperty Name="ERR_DESCRIPCION" ColumnName="ERR_DESCRIPCION" />
+                <ScalarProperty Name="ERR_VISTA" ColumnName="ERR_VISTA" />
+                <ScalarProperty Name="ERR_ACCION" ColumnName="ERR_ACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estadistica">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Estadistica">
+              <MappingFragment StoreEntitySet="Estadistica">
+                <ScalarProperty Name="EST_CODIGO" ColumnName="EST_CODIGO" />
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="EST_FEC_HORA" ColumnName="EST_FEC_HORA" />
+                <ScalarProperty Name="EST_NAVEGADOR" ColumnName="EST_NAVEGADOR" />
+                <ScalarProperty Name="EST_PLATAFORMA_DISPOSITIVO" ColumnName="EST_PLATAFORMA_DISPOSITIVO" />
+                <ScalarProperty Name="EST_FABRICANTE_DISPOSITIVO" ColumnName="EST_FABRICANTE_DISPOSITIVO" />
+                <ScalarProperty Name="EST_VISTA" ColumnName="EST_VISTA" />
+                <ScalarProperty Name="EST_ACCION" ColumnName="EST_ACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitacion">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Habitacion">
+              <MappingFragment StoreEntitySet="Habitacion">
+                <ScalarProperty Name="HAB_CODIGO" ColumnName="HAB_CODIGO" />
+                <ScalarProperty Name="HOT_CODIGO" ColumnName="HOT_CODIGO" />
+                <ScalarProperty Name="HAB_NUMERO" ColumnName="HAB_NUMERO" />
+                <ScalarProperty Name="HAB_CAPACIDAD" ColumnName="HAB_CAPACIDAD" />
+                <ScalarProperty Name="HAB_TIPO" ColumnName="HAB_TIPO" />
+                <ScalarProperty Name="HAB_DESCRIPCION" ColumnName="HAB_DESCRIPCION" />
+                <ScalarProperty Name="HAB_ESTADO" ColumnName="HAB_ESTADO" />
+                <ScalarProperty Name="HAB_PRECIO" ColumnName="HAB_PRECIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotel">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="HOT_CODIGO" ColumnName="HOT_CODIGO" />
+                <ScalarProperty Name="HOT_NOMBRE" ColumnName="HOT_NOMBRE" />
+                <ScalarProperty Name="HOT_EMAIL" ColumnName="HOT_EMAIL" />
+                <ScalarProperty Name="HOT_DIRECCION" ColumnName="HOT_DIRECCION" />
+                <ScalarProperty Name="HOT_TELEFONO" ColumnName="HOT_TELEFONO" />
+                <ScalarProperty Name="HOT_CATEGORIA" ColumnName="HOT_CATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="RES_CODIGO" ColumnName="RES_CODIGO" />
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="HAB_CODIGO" ColumnName="HAB_CODIGO" />
+                <ScalarProperty Name="RES_FECHA_INGRESO" ColumnName="RES_FECHA_INGRESO" />
+                <ScalarProperty Name="RES_FECHA_SALIDA" ColumnName="RES_FECHA_SALIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sesion">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Sesion">
+              <MappingFragment StoreEntitySet="Sesion">
+                <ScalarProperty Name="SES_CODIGO" ColumnName="SES_CODIGO" />
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="SES_FEC_HORA_INICIO" ColumnName="SES_FEC_HORA_INICIO" />
+                <ScalarProperty Name="SES_FEC_HORA_FIN" ColumnName="SES_FEC_HORA_FIN" />
+                <ScalarProperty Name="SES_ESTADO" ColumnName="SES_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="USU_IDENTIFICACION" ColumnName="USU_IDENTIFICACION" />
+                <ScalarProperty Name="USU_NOMBRE" ColumnName="USU_NOMBRE" />
+                <ScalarProperty Name="USU_PASSWORD" ColumnName="USU_PASSWORD" />
+                <ScalarProperty Name="USU_EMAIL" ColumnName="USU_EMAIL" />
+                <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
+                <ScalarProperty Name="USU_FEC_NAC" ColumnName="USU_FEC_NAC" />
+                <ScalarProperty Name="USU_TELEFONO" ColumnName="USU_TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
