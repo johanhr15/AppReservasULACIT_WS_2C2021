@@ -195,7 +195,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aerolinea.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Aeropuerto.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agencia.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asiento.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Avion.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Error.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Escala.cs">
       <DependentUpon>ModeloReservas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estadistica.cs">
@@ -223,7 +241,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloReservas.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pasajero.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Reserva.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reserva_Vuelo.cs">
       <DependentUpon>ModeloReservas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sesion.cs">
@@ -232,7 +256,13 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModeloReservas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tiquete.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vuelo.cs">
       <DependentUpon>ModeloReservas.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -248,8 +278,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\ModeloReservas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloReservas.Context.cs</LastGenOutput>
       <DependentUpon>ModeloReservas.edmx</DependentUpon>
+      <LastGenOutput>ModeloReservas.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModeloReservas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

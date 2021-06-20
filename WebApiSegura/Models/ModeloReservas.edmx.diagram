@@ -4,20 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="755ac2ed73f145e4849e5c43ad7a5a28" Name="Diagram1">
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Error" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Estadistica" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Habitacion" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Hotel" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Reserva" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Sesion" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Usuario" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+      <Diagram DiagramId="a1ef8d06c662443580bb544bf9878b07" Name="Diagram1">
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Aerolinea" Width="1.5" PointX="3" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Aeropuerto" Width="1.5" PointX="0.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Agencia" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Asiento" Width="1.5" PointX="3" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Avion" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Error" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Escala" Width="1.5" PointX="3" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Estadistica" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Habitacion" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Hotel" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Pasajero" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Reserva" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Reserva_Vuelo" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Sesion" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Tiquete" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Usuario" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESERVAS_ULACIT_SWModel.Vuelo" Width="1.5" PointX="5.25" PointY="25.875" IsExpanded="true" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Avion_Aerolinea" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Tiquete_Aerolinea" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Vuelo_Aerolinea" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Escala_Aeropuerto" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Vuelo_Aeropuerto" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Vuelo_Aeropuerto1" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Reserva_Vuelo_Agencia" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Avion_Asiento" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Error_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Tiquete_Escala" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Estadistica_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Habitacion_Hotel" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Reserva_Habitacion" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Tiquete_Pasajero" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Reserva_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Reserva_Vuelo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Tiquete_Reserva_Vuelo" ManuallyRouted="false" />
         <AssociationConnector Association="RESERVAS_ULACIT_SWModel.FK_Sesion_Usuario" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

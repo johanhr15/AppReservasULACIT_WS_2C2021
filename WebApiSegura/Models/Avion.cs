@@ -12,17 +12,17 @@ namespace WebApiSegura.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Error
+    public partial class Avion
     {
-        public int ERR_CODIGO { get; set; }
-        public int USU_CODIGO { get; set; }
-        public System.DateTime ERR_FEC_HORA { get; set; }
-        public string ERR_FUENTE { get; set; }
-        public string ERR_NUMERO { get; set; }
-        public string ERR_DESCRIPCION { get; set; }
-        public string ERR_VISTA { get; set; }
-        public string ERR_ACCION { get; set; }
+        public int AVI_CODIGO { get; set; }
+        public int AER_CODIGO { get; set; }
+        public int ASI_CODIGO { get; set; }
+        public string AVI_MODELO { get; set; }
+        public string AVI_TIPO_RUTA { get; set; }
+        public int AVI_CAPACIDAD { get; set; }
+        public string AVI_EQUIPAJE { get; set; }
     
-        public virtual Usuario Usuario { get; set; }
+        public virtual Aerolinea Aerolinea { get; set; }
+        public virtual Asiento Asiento { get; set; }
     }
 }

@@ -5,6 +5,62 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="RESERVAS_ULACIT_SWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aerolinea">
+          <Key>
+            <PropertyRef Name="AER_CODIGO" />
+          </Key>
+          <Property Name="AER_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AVI_CODIGO" Type="int" Nullable="false" />
+          <Property Name="AER_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AER_TELEFONO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AER_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AER_SITO_WEB" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AER_SEDE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aeropuerto">
+          <Key>
+            <PropertyRef Name="ARP_CODIGO" />
+          </Key>
+          <Property Name="ARP_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARP_PAIS" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARP_CIUDAD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARP_ZONA_HORARIA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARP_VISA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARP_CONTROL_VACUNAS" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agencia">
+          <Key>
+            <PropertyRef Name="AGE_CODIGO" />
+          </Key>
+          <Property Name="AGE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AGE_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AGE_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AGE_TELEFONO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AGE_SITIO_WEB" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AGE_HORARIO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="ASI_CODIGO" />
+          </Key>
+          <Property Name="ASI_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASI_FILA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ASI_LETRA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ASI_DESCRIPCION" Type="varchar" MaxLength="255" />
+          <Property Name="ASI_CLASE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="AVI_CODIGO" />
+          </Key>
+          <Property Name="AVI_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AER_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ASI_CODIGO" Type="int" Nullable="false" />
+          <Property Name="AVI_MODELO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AVI_TIPO_RUTA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AVI_CAPACIDAD" Type="int" Nullable="false" />
+          <Property Name="AVI_EQUIPAJE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Error">
           <Key>
             <PropertyRef Name="ERR_CODIGO" />
@@ -17,6 +73,16 @@
           <Property Name="ERR_DESCRIPCION" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="ERR_VISTA" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ERR_ACCION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Escala">
+          <Key>
+            <PropertyRef Name="ESC_CODIGO" />
+          </Key>
+          <Property Name="ESC_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ESC_NUMERO_TERMINAL" Type="int" Nullable="false" />
+          <Property Name="ESC_ARP_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ESC_TIEMPO_ESPERA" Type="datetime" Nullable="false" />
+          <Property Name="ESC_TRASBORDO" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Estadistica">
           <Key>
@@ -55,6 +121,18 @@
           <Property Name="HOT_TELEFONO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="HOT_CATEGORIA" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pasajero">
+          <Key>
+            <PropertyRef Name="PAS_CODIGO" />
+          </Key>
+          <Property Name="PAS_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAS_PASAPORTE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PAS_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PAS_FEC_NACIMIENTO" Type="datetime" Nullable="false" />
+          <Property Name="PAS_NACIONALIDAD" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PAS_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PAS_TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Reserva">
           <Key>
             <PropertyRef Name="RES_CODIGO" />
@@ -64,6 +142,17 @@
           <Property Name="HAB_CODIGO" Type="int" Nullable="false" />
           <Property Name="RES_FECHA_INGRESO" Type="datetime" Nullable="false" />
           <Property Name="RES_FECHA_SALIDA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva_Vuelo">
+          <Key>
+            <PropertyRef Name="RVU_CODIGO" />
+          </Key>
+          <Property Name="RVU_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="AGE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="RVU_MONEDA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RVU_PRECIO_TOTAL" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RVU_FECHA" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Sesion">
           <Key>
@@ -85,6 +174,21 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Tiquete">
+          <Key>
+            <PropertyRef Name="TIQ_CODIGO" />
+          </Key>
+          <Property Name="TIQ_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AER_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ESC_CODIGO" Type="int" Nullable="false" />
+          <Property Name="PAS_CODIGO" Type="int" Nullable="false" />
+          <Property Name="VUE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="RVU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="TIQ_PRECIO" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TIQ_ALIMENTACION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TIQ_DEVOLUCION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TIQ_VISA_REQUERIDA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="USU_CODIGO" />
@@ -98,6 +202,43 @@
           <Property Name="USU_FEC_NAC" Type="datetime" Nullable="false" />
           <Property Name="USU_TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="Vuelo">
+          <Key>
+            <PropertyRef Name="VUE_CODIGO" />
+          </Key>
+          <Property Name="VUE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AER_CODIGO" Type="int" />
+          <Property Name="VUE_ORI_CODIGO" Type="int" Nullable="false" />
+          <Property Name="VUE_DES_CODIGO" Type="int" Nullable="false" />
+          <Property Name="VUE_TERMINAL" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="VUE_PUERTA" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="VUE_HORA_PARTIDA" Type="datetime" Nullable="false" />
+          <Property Name="VUE_HORA_LLEGADA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Avion_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+          <End Role="Avion" Type="Self.Avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Avion">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avion_Asiento">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Avion" Type="Self.Avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="ASI_CODIGO" />
+            </Principal>
+            <Dependent Role="Avion">
+              <PropertyRef Name="ASI_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Error_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Error" Type="Self.Error" Multiplicity="*" />
@@ -107,6 +248,18 @@
             </Principal>
             <Dependent Role="Error">
               <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Escala_Aeropuerto">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Escala" Type="Self.Escala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Escala">
+              <PropertyRef Name="ESC_ARP_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,6 +311,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reserva_Vuelo_Agencia">
+          <End Role="Agencia" Type="Self.Agencia" Multiplicity="1" />
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencia">
+              <PropertyRef Name="AGE_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva_Vuelo">
+              <PropertyRef Name="AGE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Vuelo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva_Vuelo">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sesion_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Sesion" Type="Self.Sesion" Multiplicity="*" />
@@ -170,18 +347,124 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tiquete_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Escala">
+          <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escala">
+              <PropertyRef Name="ESC_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="ESC_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Pasajero">
+          <End Role="Pasajero" Type="Self.Pasajero" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajero">
+              <PropertyRef Name="PAS_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="PAS_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Reserva_Vuelo">
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva_Vuelo">
+              <PropertyRef Name="RVU_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="RVU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="0..1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aeropuerto">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="VUE_DES_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aeropuerto1">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="VUE_ORI_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RESERVAS_ULACIT_SWModelStoreContainer">
+          <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aeropuerto" EntityType="Self.Aeropuerto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agencia" EntityType="Self.Agencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asiento" EntityType="Self.Asiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avion" EntityType="Self.Avion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escala" EntityType="Self.Escala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estadistica" EntityType="Self.Estadistica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Habitacion" EntityType="Self.Habitacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pasajero" EntityType="Self.Pasajero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva_Vuelo" EntityType="Self.Reserva_Vuelo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sesion" EntityType="Self.Sesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tiquete" EntityType="Self.Tiquete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vuelo" EntityType="Self.Vuelo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Avion_Aerolinea" Association="Self.FK_Avion_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Avion" EntitySet="Avion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avion_Asiento" Association="Self.FK_Avion_Asiento">
+            <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="Avion" EntitySet="Avion" />
+          </AssociationSet>
           <AssociationSet Name="FK_Error_Usuario" Association="Self.FK_Error_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Error" EntitySet="Error" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Escala_Aeropuerto" Association="Self.FK_Escala_Aeropuerto">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Escala" EntitySet="Escala" />
           </AssociationSet>
           <AssociationSet Name="FK_Estadistica_Usuario" Association="Self.FK_Estadistica_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -199,9 +482,45 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Vuelo_Agencia" Association="Self.FK_Reserva_Vuelo_Agencia">
+            <End Role="Agencia" EntitySet="Agencia" />
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Vuelo_Usuario" Association="Self.FK_Reserva_Vuelo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Sesion_Usuario" Association="Self.FK_Sesion_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Sesion" EntitySet="Sesion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Aerolinea" Association="Self.FK_Tiquete_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Escala" Association="Self.FK_Tiquete_Escala">
+            <End Role="Escala" EntitySet="Escala" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Pasajero" Association="Self.FK_Tiquete_Pasajero">
+            <End Role="Pasajero" EntitySet="Pasajero" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Reserva_Vuelo" Association="Self.FK_Tiquete_Reserva_Vuelo">
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aerolinea" Association="Self.FK_Vuelo_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aeropuerto" Association="Self.FK_Vuelo_Aeropuerto">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aeropuerto1" Association="Self.FK_Vuelo_Aeropuerto1">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -209,6 +528,72 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RESERVAS_ULACIT_SWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aerolinea">
+          <Key>
+            <PropertyRef Name="AER_CODIGO" />
+          </Key>
+          <Property Name="AER_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AVI_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="AER_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AER_TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AER_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AER_SITO_WEB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AER_SEDE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Avion" Relationship="Self.FK_Avion_Aerolinea" FromRole="Aerolinea" ToRole="Avion" />
+          <NavigationProperty Name="Tiquete" Relationship="Self.FK_Tiquete_Aerolinea" FromRole="Aerolinea" ToRole="Tiquete" />
+          <NavigationProperty Name="Vuelo" Relationship="Self.FK_Vuelo_Aerolinea" FromRole="Aerolinea" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="Aeropuerto">
+          <Key>
+            <PropertyRef Name="ARP_CODIGO" />
+          </Key>
+          <Property Name="ARP_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARP_PAIS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARP_CIUDAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARP_ZONA_HORARIA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARP_VISA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARP_CONTROL_VACUNAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Escala" Relationship="Self.FK_Escala_Aeropuerto" FromRole="Aeropuerto" ToRole="Escala" />
+          <NavigationProperty Name="Vuelo" Relationship="Self.FK_Vuelo_Aeropuerto" FromRole="Aeropuerto" ToRole="Vuelo" />
+          <NavigationProperty Name="Vuelo1" Relationship="Self.FK_Vuelo_Aeropuerto1" FromRole="Aeropuerto" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="Agencia">
+          <Key>
+            <PropertyRef Name="AGE_CODIGO" />
+          </Key>
+          <Property Name="AGE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AGE_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AGE_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AGE_TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AGE_SITIO_WEB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AGE_HORARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reserva_Vuelo" Relationship="Self.FK_Reserva_Vuelo_Agencia" FromRole="Agencia" ToRole="Reserva_Vuelo" />
+        </EntityType>
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="ASI_CODIGO" />
+          </Key>
+          <Property Name="ASI_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASI_FILA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASI_LETRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASI_DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ASI_CLASE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Avion" Relationship="Self.FK_Avion_Asiento" FromRole="Asiento" ToRole="Avion" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="AVI_CODIGO" />
+          </Key>
+          <Property Name="AVI_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AER_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ASI_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="AVI_MODELO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AVI_TIPO_RUTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AVI_CAPACIDAD" Type="Int32" Nullable="false" />
+          <Property Name="AVI_EQUIPAJE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aerolinea" Relationship="Self.FK_Avion_Aerolinea" FromRole="Avion" ToRole="Aerolinea" />
+          <NavigationProperty Name="Asiento" Relationship="Self.FK_Avion_Asiento" FromRole="Avion" ToRole="Asiento" />
+        </EntityType>
         <EntityType Name="Error">
           <Key>
             <PropertyRef Name="ERR_CODIGO" />
@@ -222,6 +607,18 @@
           <Property Name="ERR_VISTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ERR_ACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Error_Usuario" FromRole="Error" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Escala">
+          <Key>
+            <PropertyRef Name="ESC_CODIGO" />
+          </Key>
+          <Property Name="ESC_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ESC_NUMERO_TERMINAL" Type="Int32" Nullable="false" />
+          <Property Name="ESC_ARP_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ESC_TIEMPO_ESPERA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ESC_TRASBORDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aeropuerto" Relationship="Self.FK_Escala_Aeropuerto" FromRole="Escala" ToRole="Aeropuerto" />
+          <NavigationProperty Name="Tiquete" Relationship="Self.FK_Tiquete_Escala" FromRole="Escala" ToRole="Tiquete" />
         </EntityType>
         <EntityType Name="Estadistica">
           <Key>
@@ -264,6 +661,19 @@
           <Property Name="HOT_CATEGORIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Habitacion" Relationship="Self.FK_Habitacion_Hotel" FromRole="Hotel" ToRole="Habitacion" />
         </EntityType>
+        <EntityType Name="Pasajero">
+          <Key>
+            <PropertyRef Name="PAS_CODIGO" />
+          </Key>
+          <Property Name="PAS_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAS_PASAPORTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAS_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAS_FEC_NACIMIENTO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PAS_NACIONALIDAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAS_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAS_TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tiquete" Relationship="Self.FK_Tiquete_Pasajero" FromRole="Pasajero" ToRole="Tiquete" />
+        </EntityType>
         <EntityType Name="Reserva">
           <Key>
             <PropertyRef Name="RES_CODIGO" />
@@ -275,6 +685,20 @@
           <Property Name="RES_FECHA_SALIDA" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Habitacion" Relationship="Self.FK_Reserva_Habitacion" FromRole="Reserva" ToRole="Habitacion" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Reserva_Usuario" FromRole="Reserva" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Reserva_Vuelo">
+          <Key>
+            <PropertyRef Name="RVU_CODIGO" />
+          </Key>
+          <Property Name="RVU_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="AGE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="RVU_MONEDA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RVU_PRECIO_TOTAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RVU_FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Agencia" Relationship="Self.FK_Reserva_Vuelo_Agencia" FromRole="Reserva_Vuelo" ToRole="Agencia" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Reserva_Vuelo_Usuario" FromRole="Reserva_Vuelo" ToRole="Usuario" />
+          <NavigationProperty Name="Tiquete" Relationship="Self.FK_Tiquete_Reserva_Vuelo" FromRole="Reserva_Vuelo" ToRole="Tiquete" />
         </EntityType>
         <EntityType Name="Sesion">
           <Key>
@@ -297,6 +721,25 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Tiquete">
+          <Key>
+            <PropertyRef Name="TIQ_CODIGO" />
+          </Key>
+          <Property Name="TIQ_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AER_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ESC_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="PAS_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="VUE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="RVU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="TIQ_PRECIO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TIQ_ALIMENTACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIQ_DEVOLUCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIQ_VISA_REQUERIDA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aerolinea" Relationship="Self.FK_Tiquete_Aerolinea" FromRole="Tiquete" ToRole="Aerolinea" />
+          <NavigationProperty Name="Escala" Relationship="Self.FK_Tiquete_Escala" FromRole="Tiquete" ToRole="Escala" />
+          <NavigationProperty Name="Pasajero" Relationship="Self.FK_Tiquete_Pasajero" FromRole="Tiquete" ToRole="Pasajero" />
+          <NavigationProperty Name="Reserva_Vuelo" Relationship="Self.FK_Tiquete_Reserva_Vuelo" FromRole="Tiquete" ToRole="Reserva_Vuelo" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="USU_CODIGO" />
@@ -312,8 +755,121 @@
           <NavigationProperty Name="Error" Relationship="Self.FK_Error_Usuario" FromRole="Usuario" ToRole="Error" />
           <NavigationProperty Name="Estadistica" Relationship="Self.FK_Estadistica_Usuario" FromRole="Usuario" ToRole="Estadistica" />
           <NavigationProperty Name="Reserva" Relationship="Self.FK_Reserva_Usuario" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Reserva_Vuelo" Relationship="Self.FK_Reserva_Vuelo_Usuario" FromRole="Usuario" ToRole="Reserva_Vuelo" />
           <NavigationProperty Name="Sesion" Relationship="Self.FK_Sesion_Usuario" FromRole="Usuario" ToRole="Sesion" />
         </EntityType>
+        <EntityType Name="Vuelo">
+          <Key>
+            <PropertyRef Name="VUE_CODIGO" />
+          </Key>
+          <Property Name="VUE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AER_CODIGO" Type="Int32" />
+          <Property Name="VUE_ORI_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="VUE_DES_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="VUE_TERMINAL" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VUE_PUERTA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VUE_HORA_PARTIDA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VUE_HORA_LLEGADA" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Aerolinea" Relationship="Self.FK_Vuelo_Aerolinea" FromRole="Vuelo" ToRole="Aerolinea" />
+          <NavigationProperty Name="Aeropuerto" Relationship="Self.FK_Vuelo_Aeropuerto" FromRole="Vuelo" ToRole="Aeropuerto" />
+          <NavigationProperty Name="Aeropuerto1" Relationship="Self.FK_Vuelo_Aeropuerto1" FromRole="Vuelo" ToRole="Aeropuerto" />
+        </EntityType>
+        <Association Name="FK_Avion_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+          <End Role="Avion" Type="Self.Avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Avion">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="0..1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="AER_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="AER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Escala_Aeropuerto">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Escala" Type="Self.Escala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Escala">
+              <PropertyRef Name="ESC_ARP_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aeropuerto">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="VUE_DES_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aeropuerto1">
+          <End Role="Aeropuerto" Type="Self.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ARP_CODIGO" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="VUE_ORI_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Vuelo_Agencia">
+          <End Role="Agencia" Type="Self.Agencia" Multiplicity="1" />
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencia">
+              <PropertyRef Name="AGE_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva_Vuelo">
+              <PropertyRef Name="AGE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avion_Asiento">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="1" />
+          <End Role="Avion" Type="Self.Avion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="ASI_CODIGO" />
+            </Principal>
+            <Dependent Role="Avion">
+              <PropertyRef Name="ASI_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Error_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Error" Type="Self.Error" Multiplicity="*" />
@@ -323,6 +879,18 @@
             </Principal>
             <Dependent Role="Error">
               <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Escala">
+          <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escala">
+              <PropertyRef Name="ESC_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="ESC_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -362,6 +930,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tiquete_Pasajero">
+          <End Role="Pasajero" Type="Self.Pasajero" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajero">
+              <PropertyRef Name="PAS_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="PAS_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reserva_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
@@ -371,6 +951,30 @@
             </Principal>
             <Dependent Role="Reserva">
               <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Vuelo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="Reserva_Vuelo">
+              <PropertyRef Name="USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Reserva_Vuelo">
+          <End Role="Reserva_Vuelo" Type="Self.Reserva_Vuelo" Multiplicity="1" />
+          <End Role="Tiquete" Type="Self.Tiquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva_Vuelo">
+              <PropertyRef Name="RVU_CODIGO" />
+            </Principal>
+            <Dependent Role="Tiquete">
+              <PropertyRef Name="RVU_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -387,17 +991,63 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="RESERVAS_ULACIT_SWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" />
+          <EntitySet Name="Aeropuerto" EntityType="Self.Aeropuerto" />
+          <EntitySet Name="Agencia" EntityType="Self.Agencia" />
+          <EntitySet Name="Asiento" EntityType="Self.Asiento" />
+          <EntitySet Name="Avion" EntityType="Self.Avion" />
           <EntitySet Name="Error" EntityType="Self.Error" />
+          <EntitySet Name="Escala" EntityType="Self.Escala" />
           <EntitySet Name="Estadistica" EntityType="Self.Estadistica" />
           <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" />
+          <EntitySet Name="Pasajero" EntityType="Self.Pasajero" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" />
+          <EntitySet Name="Reserva_Vuelo" EntityType="Self.Reserva_Vuelo" />
           <EntitySet Name="Sesion" EntityType="Self.Sesion" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tiquete" EntityType="Self.Tiquete" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Vuelo" EntityType="Self.Vuelo" />
+          <AssociationSet Name="FK_Avion_Aerolinea" Association="Self.FK_Avion_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Avion" EntitySet="Avion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Aerolinea" Association="Self.FK_Tiquete_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aerolinea" Association="Self.FK_Vuelo_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Escala_Aeropuerto" Association="Self.FK_Escala_Aeropuerto">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Escala" EntitySet="Escala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aeropuerto" Association="Self.FK_Vuelo_Aeropuerto">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aeropuerto1" Association="Self.FK_Vuelo_Aeropuerto1">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Vuelo_Agencia" Association="Self.FK_Reserva_Vuelo_Agencia">
+            <End Role="Agencia" EntitySet="Agencia" />
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avion_Asiento" Association="Self.FK_Avion_Asiento">
+            <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="Avion" EntitySet="Avion" />
+          </AssociationSet>
           <AssociationSet Name="FK_Error_Usuario" Association="Self.FK_Error_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Error" EntitySet="Error" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Escala" Association="Self.FK_Tiquete_Escala">
+            <End Role="Escala" EntitySet="Escala" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
           </AssociationSet>
           <AssociationSet Name="FK_Estadistica_Usuario" Association="Self.FK_Estadistica_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -411,9 +1061,21 @@
             <End Role="Habitacion" EntitySet="Habitacion" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Pasajero" Association="Self.FK_Tiquete_Pasajero">
+            <End Role="Pasajero" EntitySet="Pasajero" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reserva_Usuario" Association="Self.FK_Reserva_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Vuelo_Usuario" Association="Self.FK_Reserva_Vuelo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Reserva_Vuelo" Association="Self.FK_Tiquete_Reserva_Vuelo">
+            <End Role="Reserva_Vuelo" EntitySet="Reserva_Vuelo" />
+            <End Role="Tiquete" EntitySet="Tiquete" />
           </AssociationSet>
           <AssociationSet Name="FK_Sesion_Usuario" Association="Self.FK_Sesion_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -426,6 +1088,67 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RESERVAS_ULACIT_SWModelStoreContainer" CdmEntityContainer="RESERVAS_ULACIT_SWEntities">
+          <EntitySetMapping Name="Aerolinea">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Aerolinea">
+              <MappingFragment StoreEntitySet="Aerolinea">
+                <ScalarProperty Name="AER_CODIGO" ColumnName="AER_CODIGO" />
+                <ScalarProperty Name="AVI_CODIGO" ColumnName="AVI_CODIGO" />
+                <ScalarProperty Name="AER_NOMBRE" ColumnName="AER_NOMBRE" />
+                <ScalarProperty Name="AER_TELEFONO" ColumnName="AER_TELEFONO" />
+                <ScalarProperty Name="AER_CORREO" ColumnName="AER_CORREO" />
+                <ScalarProperty Name="AER_SITO_WEB" ColumnName="AER_SITO_WEB" />
+                <ScalarProperty Name="AER_SEDE" ColumnName="AER_SEDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aeropuerto">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Aeropuerto">
+              <MappingFragment StoreEntitySet="Aeropuerto">
+                <ScalarProperty Name="ARP_CODIGO" ColumnName="ARP_CODIGO" />
+                <ScalarProperty Name="ARP_PAIS" ColumnName="ARP_PAIS" />
+                <ScalarProperty Name="ARP_CIUDAD" ColumnName="ARP_CIUDAD" />
+                <ScalarProperty Name="ARP_ZONA_HORARIA" ColumnName="ARP_ZONA_HORARIA" />
+                <ScalarProperty Name="ARP_VISA" ColumnName="ARP_VISA" />
+                <ScalarProperty Name="ARP_CONTROL_VACUNAS" ColumnName="ARP_CONTROL_VACUNAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agencia">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Agencia">
+              <MappingFragment StoreEntitySet="Agencia">
+                <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+                <ScalarProperty Name="AGE_NOMBRE" ColumnName="AGE_NOMBRE" />
+                <ScalarProperty Name="AGE_CORREO" ColumnName="AGE_CORREO" />
+                <ScalarProperty Name="AGE_TELEFONO" ColumnName="AGE_TELEFONO" />
+                <ScalarProperty Name="AGE_SITIO_WEB" ColumnName="AGE_SITIO_WEB" />
+                <ScalarProperty Name="AGE_HORARIO" ColumnName="AGE_HORARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asiento">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Asiento">
+              <MappingFragment StoreEntitySet="Asiento">
+                <ScalarProperty Name="ASI_CODIGO" ColumnName="ASI_CODIGO" />
+                <ScalarProperty Name="ASI_FILA" ColumnName="ASI_FILA" />
+                <ScalarProperty Name="ASI_LETRA" ColumnName="ASI_LETRA" />
+                <ScalarProperty Name="ASI_DESCRIPCION" ColumnName="ASI_DESCRIPCION" />
+                <ScalarProperty Name="ASI_CLASE" ColumnName="ASI_CLASE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avion">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Avion">
+              <MappingFragment StoreEntitySet="Avion">
+                <ScalarProperty Name="AVI_CODIGO" ColumnName="AVI_CODIGO" />
+                <ScalarProperty Name="AER_CODIGO" ColumnName="AER_CODIGO" />
+                <ScalarProperty Name="ASI_CODIGO" ColumnName="ASI_CODIGO" />
+                <ScalarProperty Name="AVI_MODELO" ColumnName="AVI_MODELO" />
+                <ScalarProperty Name="AVI_TIPO_RUTA" ColumnName="AVI_TIPO_RUTA" />
+                <ScalarProperty Name="AVI_CAPACIDAD" ColumnName="AVI_CAPACIDAD" />
+                <ScalarProperty Name="AVI_EQUIPAJE" ColumnName="AVI_EQUIPAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Error">
             <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Error">
               <MappingFragment StoreEntitySet="Error">
@@ -437,6 +1160,17 @@
                 <ScalarProperty Name="ERR_DESCRIPCION" ColumnName="ERR_DESCRIPCION" />
                 <ScalarProperty Name="ERR_VISTA" ColumnName="ERR_VISTA" />
                 <ScalarProperty Name="ERR_ACCION" ColumnName="ERR_ACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escala">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Escala">
+              <MappingFragment StoreEntitySet="Escala">
+                <ScalarProperty Name="ESC_CODIGO" ColumnName="ESC_CODIGO" />
+                <ScalarProperty Name="ESC_NUMERO_TERMINAL" ColumnName="ESC_NUMERO_TERMINAL" />
+                <ScalarProperty Name="ESC_ARP_CODIGO" ColumnName="ESC_ARP_CODIGO" />
+                <ScalarProperty Name="ESC_TIEMPO_ESPERA" ColumnName="ESC_TIEMPO_ESPERA" />
+                <ScalarProperty Name="ESC_TRASBORDO" ColumnName="ESC_TRASBORDO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -480,6 +1214,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pasajero">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Pasajero">
+              <MappingFragment StoreEntitySet="Pasajero">
+                <ScalarProperty Name="PAS_CODIGO" ColumnName="PAS_CODIGO" />
+                <ScalarProperty Name="PAS_PASAPORTE" ColumnName="PAS_PASAPORTE" />
+                <ScalarProperty Name="PAS_NOMBRE" ColumnName="PAS_NOMBRE" />
+                <ScalarProperty Name="PAS_FEC_NACIMIENTO" ColumnName="PAS_FEC_NACIMIENTO" />
+                <ScalarProperty Name="PAS_NACIONALIDAD" ColumnName="PAS_NACIONALIDAD" />
+                <ScalarProperty Name="PAS_CORREO" ColumnName="PAS_CORREO" />
+                <ScalarProperty Name="PAS_TELEFONO" ColumnName="PAS_TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Reserva">
             <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Reserva">
               <MappingFragment StoreEntitySet="Reserva">
@@ -488,6 +1235,18 @@
                 <ScalarProperty Name="HAB_CODIGO" ColumnName="HAB_CODIGO" />
                 <ScalarProperty Name="RES_FECHA_INGRESO" ColumnName="RES_FECHA_INGRESO" />
                 <ScalarProperty Name="RES_FECHA_SALIDA" ColumnName="RES_FECHA_SALIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva_Vuelo">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Reserva_Vuelo">
+              <MappingFragment StoreEntitySet="Reserva_Vuelo">
+                <ScalarProperty Name="RVU_CODIGO" ColumnName="RVU_CODIGO" />
+                <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+                <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+                <ScalarProperty Name="RVU_MONEDA" ColumnName="RVU_MONEDA" />
+                <ScalarProperty Name="RVU_PRECIO_TOTAL" ColumnName="RVU_PRECIO_TOTAL" />
+                <ScalarProperty Name="RVU_FECHA" ColumnName="RVU_FECHA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -513,6 +1272,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tiquete">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Tiquete">
+              <MappingFragment StoreEntitySet="Tiquete">
+                <ScalarProperty Name="TIQ_CODIGO" ColumnName="TIQ_CODIGO" />
+                <ScalarProperty Name="AER_CODIGO" ColumnName="AER_CODIGO" />
+                <ScalarProperty Name="ESC_CODIGO" ColumnName="ESC_CODIGO" />
+                <ScalarProperty Name="PAS_CODIGO" ColumnName="PAS_CODIGO" />
+                <ScalarProperty Name="VUE_CODIGO" ColumnName="VUE_CODIGO" />
+                <ScalarProperty Name="RVU_CODIGO" ColumnName="RVU_CODIGO" />
+                <ScalarProperty Name="TIQ_PRECIO" ColumnName="TIQ_PRECIO" />
+                <ScalarProperty Name="TIQ_ALIMENTACION" ColumnName="TIQ_ALIMENTACION" />
+                <ScalarProperty Name="TIQ_DEVOLUCION" ColumnName="TIQ_DEVOLUCION" />
+                <ScalarProperty Name="TIQ_VISA_REQUERIDA" ColumnName="TIQ_VISA_REQUERIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
@@ -524,6 +1299,20 @@
                 <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
                 <ScalarProperty Name="USU_FEC_NAC" ColumnName="USU_FEC_NAC" />
                 <ScalarProperty Name="USU_TELEFONO" ColumnName="USU_TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vuelo">
+            <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Vuelo">
+              <MappingFragment StoreEntitySet="Vuelo">
+                <ScalarProperty Name="VUE_CODIGO" ColumnName="VUE_CODIGO" />
+                <ScalarProperty Name="AER_CODIGO" ColumnName="AER_CODIGO" />
+                <ScalarProperty Name="VUE_ORI_CODIGO" ColumnName="VUE_ORI_CODIGO" />
+                <ScalarProperty Name="VUE_DES_CODIGO" ColumnName="VUE_DES_CODIGO" />
+                <ScalarProperty Name="VUE_TERMINAL" ColumnName="VUE_TERMINAL" />
+                <ScalarProperty Name="VUE_PUERTA" ColumnName="VUE_PUERTA" />
+                <ScalarProperty Name="VUE_HORA_PARTIDA" ColumnName="VUE_HORA_PARTIDA" />
+                <ScalarProperty Name="VUE_HORA_LLEGADA" ColumnName="VUE_HORA_LLEGADA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -544,7 +1333,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
