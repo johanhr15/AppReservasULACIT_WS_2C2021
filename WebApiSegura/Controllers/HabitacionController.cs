@@ -11,6 +11,7 @@ namespace WebApiSegura.Controllers
     [RoutePrefix("api/habitacion")]
     public class HabitacionController : ApiController
     {
+        [HttpGet]
         public IHttpActionResult GetId(int id)
         {
             Habitacion habitacion = new Habitacion();
@@ -36,7 +37,7 @@ namespace WebApiSegura.Controllers
                         habitacion.HAB_CAPACIDAD = sqlDataReader.GetInt32(3);
                         habitacion.HAB_TIPO = sqlDataReader.GetString(4);
                         habitacion.HAB_DESCRIPCION = sqlDataReader.GetString(5);
-                        habitacion.HAB_ESTADO = sqlDataReader.GetString(5);
+                        habitacion.HAB_ESTADO = sqlDataReader.GetString(6);
                         habitacion.HAB_PRECIO = sqlDataReader.GetDecimal(7);
 
                     }
@@ -52,6 +53,7 @@ namespace WebApiSegura.Controllers
             return Ok(habitacion);
         }
 
+        [HttpGet]
         public IHttpActionResult GetAll()
         {
             List<Habitacion> habitaciones = new List<Habitacion>();
