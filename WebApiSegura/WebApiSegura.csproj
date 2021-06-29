@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RerservaVueloController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
@@ -341,6 +342,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Estadistica\" />
+    <Folder Include="Views\RerservaVuelo\" />
     <Folder Include="Views\Reserva\" />
     <Folder Include="Views\Sesion\" />
   </ItemGroup>
