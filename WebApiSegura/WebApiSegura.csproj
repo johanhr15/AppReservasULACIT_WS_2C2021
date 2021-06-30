@@ -192,6 +192,7 @@
     <Compile Include="Controllers\RerservaVueloController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
+    <Compile Include="Controllers\TiqueteController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -345,6 +346,7 @@
     <Folder Include="Views\RerservaVuelo\" />
     <Folder Include="Views\Reserva\" />
     <Folder Include="Views\Sesion\" />
+    <Folder Include="Views\Tiquete\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
