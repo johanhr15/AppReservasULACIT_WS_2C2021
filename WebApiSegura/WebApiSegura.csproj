@@ -181,7 +181,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AerolineaController.cs" />
     <Compile Include="Controllers\AeropuertoController.cs" />
+    <Compile Include="Controllers\AgenciaController.cs" />
+    <Compile Include="Controllers\AsientoController.cs" />
+    <Compile Include="Controllers\AvionController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EscalaController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
@@ -189,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PasajeroController.cs" />
     <Compile Include="Controllers\ReservaVueloController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
@@ -196,6 +201,7 @@
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VueloController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,12 +347,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Aerolinea\" />
+    <Folder Include="Views\Agencia\" />
+    <Folder Include="Views\Asiento\" />
+    <Folder Include="Views\Avion\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Estadistica\" />
+    <Folder Include="Views\Pasajero\" />
     <Folder Include="Views\RerservaVuelo\" />
     <Folder Include="Views\Reserva\" />
     <Folder Include="Views\Sesion\" />
     <Folder Include="Views\Tiquete\" />
+    <Folder Include="Views\Vuelo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
