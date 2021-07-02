@@ -11,7 +11,7 @@ using WebApiSegura.Models;
 namespace WebApiSegura.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Reserva_Vuelo")]
+    [RoutePrefix("api/ReservaVuelo")]
     public class ReservaVueloController : ApiController
     {
         [HttpGet]
@@ -28,7 +28,7 @@ namespace WebApiSegura.Controllers
                                                             FROM RESERVA_VUELO
                                                             WHERE RVU_CODIGO = @RVU_CODIGO", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@ARP_CODIGO", id);
+                    sqlCommand.Parameters.AddWithValue("@RVU_CODIGO", id);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
