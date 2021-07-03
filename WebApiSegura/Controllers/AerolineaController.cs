@@ -12,7 +12,7 @@ namespace WebApiSegura.Controllers
 {
     [Authorize]
     [RoutePrefix("api/aerolinea")]
-    public class AerolieaController : ApiController
+    public class AerolineaController : ApiController
     {
         [HttpGet]
         public IHttpActionResult GetId(int id)
@@ -23,8 +23,8 @@ namespace WebApiSegura.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AER_CODIGO, AVI_CODIGO, AER_NOMBRE, 
-                                                            AER_TELEFONO, AER_CORREO, AER_SITO_WEB, AER_SEDE FROM Aerolinea
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AER_CODIGO, AER_NOMBRE, 
+                                                            AER_TELEFONO, AER_CORREO, AER_SITIO_WEB, AER_SEDE FROM Aerolinea
                                                             WHERE AER_CODIGO = @AER_CODIGO", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@AER_CODIGO", id);
@@ -33,12 +33,11 @@ namespace WebApiSegura.Controllers
                     while (sqlDataReader.Read())
                     {
                         aerolinea.AER_CODIGO = sqlDataReader.GetInt32(0);
-                        aerolinea.AVI_CODIGO = sqlDataReader.GetInt32(1);
-                        aerolinea.AER_NOMBRE = sqlDataReader.GetString(2);
-                        aerolinea.AER_TELEFONO = sqlDataReader.GetString(3);
-                        aerolinea.AER_CORREO = sqlDataReader.GetString(4);
-                        aerolinea.AER_SITO_WEB = sqlDataReader.GetString(5);
-                        aerolinea.AER_SEDE = sqlDataReader.GetString(6);
+                        aerolinea.AER_NOMBRE = sqlDataReader.GetString(1);
+                        aerolinea.AER_TELEFONO = sqlDataReader.GetString(2);
+                        aerolinea.AER_CORREO = sqlDataReader.GetString(3);
+                        aerolinea.AER_SITIO_WEB = sqlDataReader.GetString(4);
+                        aerolinea.AER_SEDE = sqlDataReader.GetString(5);
                     }
 
                     sqlConnection.Close();
@@ -60,8 +59,8 @@ namespace WebApiSegura.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AER_CODIGO, AVI_CODIGO, AER_NOMBRE, 
-                                                            AER_TELEFONO, AER_CORREO, AER_SITO_WEB, 
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AER_CODIGO, AER_NOMBRE, 
+                                                            AER_TELEFONO, AER_CORREO, AER_SITIO_WEB, 
                                                             AER_SEDE FROM Aerolinea", sqlConnection);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -69,12 +68,11 @@ namespace WebApiSegura.Controllers
                     {
                         Aerolinea aerolinea = new Aerolinea();
                         aerolinea.AER_CODIGO = sqlDataReader.GetInt32(0);
-                        aerolinea.AVI_CODIGO = sqlDataReader.GetInt32(1);
-                        aerolinea.AER_NOMBRE = sqlDataReader.GetString(2);
-                        aerolinea.AER_TELEFONO = sqlDataReader.GetString(3);
-                        aerolinea.AER_CORREO = sqlDataReader.GetString(4);
-                        aerolinea.AER_SITO_WEB = sqlDataReader.GetString(5);
-                        aerolinea.AER_SEDE = sqlDataReader.GetString(6);
+                        aerolinea.AER_NOMBRE = sqlDataReader.GetString(1);
+                        aerolinea.AER_TELEFONO = sqlDataReader.GetString(2);
+                        aerolinea.AER_CORREO = sqlDataReader.GetString(3);
+                        aerolinea.AER_SITIO_WEB = sqlDataReader.GetString(4);
+                        aerolinea.AER_SEDE = sqlDataReader.GetString(5);
                         aerolineas.Add(aerolinea);
                     }
 
@@ -99,19 +97,18 @@ namespace WebApiSegura.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO AEROLINEA(AVI_CODIGO, AER_NOMBRE, 
+                    SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO AEROLINEA (AER_NOMBRE, 
                                                             AER_TELEFONO, AER_CORREO, AER_SITO_WEB,
                                                             AER_SEDE)
-                                                            VALUES (@AVI_CODIGO, @AER_NOMBRE, 
-                                                            @AER_TELEFONO, @AER_CORREO, @AER_SITO_WEB,
+                                                            VALUES (@AER_NOMBRE, 
+                                                            @AER_TELEFONO, @AER_CORREO, @AER_SITIO_WEB,
                                                             @AER_SEDE)",
                                                             sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@AVI_CODIGO", aerolinea.AVI_CODIGO);
                     sqlCommand.Parameters.AddWithValue("@AER_NOMBRE", aerolinea.AER_NOMBRE);
                     sqlCommand.Parameters.AddWithValue("@AER_TELEFONO", aerolinea.AER_TELEFONO);
                     sqlCommand.Parameters.AddWithValue("@AER_CORREO", aerolinea.AER_CORREO);
-                    sqlCommand.Parameters.AddWithValue("@AER_SITIO_WEB", aerolinea.AER_SITO_WEB);
+                    sqlCommand.Parameters.AddWithValue("@AER_SITIO_WEB", aerolinea.AER_SITIO_WEB);
                     sqlCommand.Parameters.AddWithValue("@AER_SEDE", aerolinea.AER_SEDE);
 
                     sqlConnection.Open();
@@ -148,11 +145,10 @@ namespace WebApiSegura.Controllers
                                                             sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@AER_CODIGO", aerolinea.AER_CODIGO);
-                    sqlCommand.Parameters.AddWithValue("@AVI_CODIGO", aerolinea.AVI_CODIGO);
                     sqlCommand.Parameters.AddWithValue("@AER_NOMBRE", aerolinea.AER_NOMBRE);
                     sqlCommand.Parameters.AddWithValue("@AER_TELEFONO", aerolinea.AER_TELEFONO);
                     sqlCommand.Parameters.AddWithValue("@AER_CORREO", aerolinea.AER_CORREO);
-                    sqlCommand.Parameters.AddWithValue("@AER_SITO_WEB", aerolinea.AER_SITO_WEB);
+                    sqlCommand.Parameters.AddWithValue("@AER_SITIO_WEB", aerolinea.AER_SITIO_WEB);
                     sqlCommand.Parameters.AddWithValue("@AER_SEDE", aerolinea.AER_SEDE);
 
                     sqlConnection.Open();

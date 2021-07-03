@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\eherreran967\Desktop\Drive\Servicios Web\AppReservasULACIT_WS_2C2021\WebApiSegura\Models\ModeloReservas.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\eherreran967\Desktop\Prod\AppReservasULACIT_WS_2C2021\WebApiSegura\Models\ModeloReservas.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

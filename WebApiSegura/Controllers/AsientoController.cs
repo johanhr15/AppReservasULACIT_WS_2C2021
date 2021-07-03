@@ -99,7 +99,7 @@ namespace WebApiSegura.Controllers
                 {
                     SqlCommand sqlCommand = new
 
-                        SqlCommand(@"INSERT INTO RESERVA (ASI_FILA, ASI_LETRA, 
+                        SqlCommand(@"INSERT INTO ASIENTO (ASI_FILA, ASI_LETRA, 
                                                             ASI_DESCRIPCION, ASI_CLASE) 
                                                              VALUES (@ASI_FILA, @ASI_LETRA, @ASI_DESCRIPCION, @ASI_CLASE) ", sqlConnection);
 
@@ -135,7 +135,7 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"UPDATE RESERVA SET ASI_FILA = @ASI_FILA, ASI_LETRA = @ASI_LETRA, 
+                        SqlCommand(@"UPDATE ASIENTO SET ASI_FILA = @ASI_FILA, ASI_LETRA = @ASI_LETRA, 
                                    ASI_DESCRIPCION = @ASI_DESCRIPCION, ASI_CLASE = @ASI_CLASE
                                     WHERE ASI_CODIGO = @ASI_CODIGO", sqlConnection);
 
@@ -173,7 +173,7 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"DELETE RESERVA WHERE ASI_CODIGO = @ASI_CODIGO", sqlConnection);
+                        SqlCommand(@"DELETE ASIENTO WHERE ASI_CODIGO = @ASI_CODIGO", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@ASI_CODIGO", id);
 

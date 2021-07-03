@@ -4,17 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RESERVAS_ULACIT_SWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RESERVAS_ULACIT_SWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aerolinea">
           <Key>
             <PropertyRef Name="AER_CODIGO" />
           </Key>
           <Property Name="AER_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AVI_CODIGO" Type="int" Nullable="false" />
           <Property Name="AER_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AER_TELEFONO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AER_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="AER_SITO_WEB" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AER_SITIO_WEB" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="AER_SEDE" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Aeropuerto">
@@ -523,8 +522,7 @@
             <End Role="Vuelo" EntitySet="Vuelo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RESERVAS_ULACIT_SWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -533,15 +531,14 @@
             <PropertyRef Name="AER_CODIGO" />
           </Key>
           <Property Name="AER_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AVI_CODIGO" Type="Int32" Nullable="false" />
           <Property Name="AER_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AER_TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AER_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AER_SITO_WEB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AER_SEDE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Avion" Relationship="Self.FK_Avion_Aerolinea" FromRole="Aerolinea" ToRole="Avion" />
           <NavigationProperty Name="Tiquete" Relationship="Self.FK_Tiquete_Aerolinea" FromRole="Aerolinea" ToRole="Tiquete" />
           <NavigationProperty Name="Vuelo" Relationship="Self.FK_Vuelo_Aerolinea" FromRole="Aerolinea" ToRole="Vuelo" />
+          <Property Name="AER_SITIO_WEB" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Aeropuerto">
           <Key>
@@ -1091,12 +1088,11 @@
           <EntitySetMapping Name="Aerolinea">
             <EntityTypeMapping TypeName="RESERVAS_ULACIT_SWModel.Aerolinea">
               <MappingFragment StoreEntitySet="Aerolinea">
+                <ScalarProperty Name="AER_SITIO_WEB" ColumnName="AER_SITIO_WEB" />
                 <ScalarProperty Name="AER_CODIGO" ColumnName="AER_CODIGO" />
-                <ScalarProperty Name="AVI_CODIGO" ColumnName="AVI_CODIGO" />
                 <ScalarProperty Name="AER_NOMBRE" ColumnName="AER_NOMBRE" />
                 <ScalarProperty Name="AER_TELEFONO" ColumnName="AER_TELEFONO" />
                 <ScalarProperty Name="AER_CORREO" ColumnName="AER_CORREO" />
-                <ScalarProperty Name="AER_SITO_WEB" ColumnName="AER_SITO_WEB" />
                 <ScalarProperty Name="AER_SEDE" ColumnName="AER_SEDE" />
               </MappingFragment>
             </EntityTypeMapping>
