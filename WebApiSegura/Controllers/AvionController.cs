@@ -22,8 +22,8 @@ namespace WebApiSegura.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AVI_CODIGO, AER_CODIGO, AVI_MODELO, 
-                                                            AVI_TIPO_RUTA, AVI_CAPACIDAD
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AVI_CODIGO, AER_CODIGO, ASI_CODIGO, AVI_MODELO, 
+                                                            AVI_TIPO_RUTA, AVI_CAPACIDAD, AVI_EQUIPAJE
                                                             FROM   Avion
                                                              WHERE AVI_CODIGO = @AVI_CODIGO", sqlConnection);
 
@@ -34,9 +34,11 @@ namespace WebApiSegura.Controllers
                     {
                         avion.AVI_CODIGO = sqlDataReader.GetInt32(0);
                         avion.AER_CODIGO = sqlDataReader.GetInt32(1);
-                        avion.AVI_MODELO = sqlDataReader.GetString(2);
-                        avion.AVI_TIPO_RUTA = sqlDataReader.GetString(3);
-                        avion.AVI_CAPACIDAD = sqlDataReader.GetInt32(4);
+                        avion.ASI_CODIGO = sqlDataReader.GetInt32(2);
+                        avion.AVI_MODELO = sqlDataReader.GetString(3);
+                        avion.AVI_TIPO_RUTA = sqlDataReader.GetString(4);
+                        avion.AVI_CAPACIDAD = sqlDataReader.GetInt32(5);
+                        avion.AVI_EQUIPAJE = sqlDataReader.GetString(6);
                     }
 
                     sqlConnection.Close();
@@ -58,9 +60,9 @@ namespace WebApiSegura.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AVI_CODIGO, AER_CODIGO, AVI_MODELO, 
-                                                            AVI_TIPO_RUTA, AVI_CAPACIDAD
-                                                             FROM   Avion", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT AVI_CODIGO, AER_CODIGO, ASI_CODIGO, AVI_MODELO, 
+                                                            AVI_TIPO_RUTA, AVI_CAPACIDAD, AVI_EQUIPAJE
+                                                             FROM Avion", sqlConnection);
 
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -69,9 +71,11 @@ namespace WebApiSegura.Controllers
                         Avion avion = new Avion();
                         avion.AVI_CODIGO = sqlDataReader.GetInt32(0);
                         avion.AER_CODIGO = sqlDataReader.GetInt32(1);
-                        avion.AVI_MODELO = sqlDataReader.GetString(2);
-                        avion.AVI_TIPO_RUTA = sqlDataReader.GetString(3);
-                        avion.AVI_CAPACIDAD = sqlDataReader.GetInt32(4);
+                        avion.ASI_CODIGO = sqlDataReader.GetInt32(2);
+                        avion.AVI_MODELO = sqlDataReader.GetString(3);
+                        avion.AVI_TIPO_RUTA = sqlDataReader.GetString(4);
+                        avion.AVI_CAPACIDAD = sqlDataReader.GetInt32(5);
+                        avion.AVI_EQUIPAJE = sqlDataReader.GetString(6);
                         aviones.Add(avion);
                     }
 
@@ -99,14 +103,16 @@ namespace WebApiSegura.Controllers
                 {
                     SqlCommand sqlCommand = new
 
-                        SqlCommand(@"INSERT INTO AVION (AER_CODIGO, AVI_MODELO, 
-                                                            AVI_TIPO_RUTA, AVI_CAPACIDAD) 
-                                                             VALUES (@AER_CODIGO, @AVI_MODELO, @AVI_TIPO_RUTA, @AVI_CAPACIDAD) ", sqlConnection);
+                        SqlCommand(@"INSERT INTO AVION (AER_CODIGO, ASI_CODIGO, AVI_MODELO, 
+                                   AVI_TIPO_RUTA, AVI_CAPACIDAD, AVI_EQUIPAJE) 
+                                   VALUES (@AER_CODIGO, @ASI_CODIGO, @AVI_MODELO, @AVI_TIPO_RUTA, @AVI_CAPACIDAD, @AVI_EQUIPAJE) ", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@AER_CODIGO", avion.AER_CODIGO);
+                    sqlCommand.Parameters.AddWithValue("@ASI_CODIGO", avion.ASI_CODIGO);
                     sqlCommand.Parameters.AddWithValue("@AVI_MODELO", avion.AVI_MODELO);
                     sqlCommand.Parameters.AddWithValue("@AVI_TIPO_RUTA", avion.AVI_TIPO_RUTA);
                     sqlCommand.Parameters.AddWithValue("@AVI_CAPACIDAD", avion.AVI_CAPACIDAD);
+                    sqlCommand.Parameters.AddWithValue("@AVI_EQUIPAJE", avion.AVI_EQUIPAJE);
 
                     sqlConnection.Open();
 
@@ -135,15 +141,17 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"UPDATE RESERVA SET AER_CODIGO = @AER_CODIGO, AVI_MODELO = @AVI_MODELO, 
-                                   AVI_TIPO_RUTA = @AVI_TIPO_RUTA, AVI_CAPACIDAD = @AVI_CAPACIDAD
+                        SqlCommand(@"UPDATE AVION SET AER_CODIGO = @AER_CODIGO, ASI_CODIGO = @ASI_CODIGO, AVI_MODELO = @AVI_MODELO, 
+                                   AVI_TIPO_RUTA = @AVI_TIPO_RUTA, AVI_CAPACIDAD = @AVI_CAPACIDAD, AVI_EQUIPAJE = @AVI_EQUIPAJE
                                     WHERE AVI_CODIGO = @AVI_CODIGO", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@AVI_CODIGO", avion.AVI_CODIGO);
                     sqlCommand.Parameters.AddWithValue("@AER_CODIGO", avion.AER_CODIGO);
+                    sqlCommand.Parameters.AddWithValue("@ASI_CODIGO", avion.ASI_CODIGO);
                     sqlCommand.Parameters.AddWithValue("@AVI_MODELO", avion.AVI_MODELO);
                     sqlCommand.Parameters.AddWithValue("@AVI_TIPO_RUTA", avion.AVI_TIPO_RUTA);
                     sqlCommand.Parameters.AddWithValue("@AVI_CAPACIDAD", avion.AVI_CAPACIDAD);
+                    sqlCommand.Parameters.AddWithValue("@AVI_EQUIPAJE", avion.AVI_EQUIPAJE);
 
 
                     sqlConnection.Open();
@@ -173,7 +181,7 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"DELETE RESERVA WHERE AVI_CODIGO = @AVI_CODIGO", sqlConnection);
+                        SqlCommand(@"DELETE AVION WHERE AVI_CODIGO = @AVI_CODIGO", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@AVI_CODIGO", id);
 

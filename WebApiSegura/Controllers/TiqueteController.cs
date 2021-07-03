@@ -28,7 +28,7 @@ namespace WebApiSegura.Controllers
                                                             FROM TIQUETE
                                                             WHERE TIQ_CODIGO = @TIQ_CODIGO", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@ARP_CODIGO", id);
+                    sqlCommand.Parameters.AddWithValue("@TIQ_CODIGO", id);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
