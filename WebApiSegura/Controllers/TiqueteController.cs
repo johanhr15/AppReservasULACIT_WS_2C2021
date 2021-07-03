@@ -150,14 +150,14 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"UPDATE tiquete SET AER_CODIGO = @AER_CODIGO, 
+                        SqlCommand(@"UPDATE TIQUETE SET AER_CODIGO = @AER_CODIGO, 
                                                            ESC_CODIGO = @ESC_CODIGO, PAS_CODIGO = @PAS_CODIGO,
                                                            VUE_CODIGO = @VUE_CODIGO,
                                                            RVU_CODIGO = @RVU_CODIGO,
                                                            TIQ_PRECIO = @TIQ_PRECIO,
                                                            TIQ_ALIMENTACION = @TIQ_ALIMENTACION,
                                                            TIQ_DEVOLUCION = @TIQ_DEVOLUCION,
-                                                           TIQ_VISA_REQUERIDA = @TIQ_VISA_REQUERIDA,
+                                                           TIQ_VISA_REQUERIDA = @TIQ_VISA_REQUERIDA
                                                            WHERE TIQ_CODIGO = @TIQ_CODIGO",
                                                             sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@TIQ_CODIGO", tiquete.TIQ_CODIGO);
