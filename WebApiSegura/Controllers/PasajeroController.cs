@@ -35,7 +35,7 @@ namespace WebApiSegura.Controllers
                         pasajero.PAS_FEC_NACIMIENTO = sqlDataReader.GetDateTime(3);
                         pasajero.PAS_NACIONALIDAD = sqlDataReader.GetString(4);
                         pasajero.PAS_CORREO = sqlDataReader.GetString(5);
-                        pasajero.PAS_TELEFONO = sqlDataReader.GetString(5);
+                        pasajero.PAS_TELEFONO = sqlDataReader.GetString(6);
 
                     }
 
@@ -73,7 +73,7 @@ namespace WebApiSegura.Controllers
                         pasajero.PAS_FEC_NACIMIENTO = sqlDataReader.GetDateTime(3);
                         pasajero.PAS_NACIONALIDAD = sqlDataReader.GetString(4);
                         pasajero.PAS_CORREO = sqlDataReader.GetString(5);
-                        pasajero.PAS_TELEFONO = sqlDataReader.GetString(5);
+                        pasajero.PAS_TELEFONO = sqlDataReader.GetString(6);
                         pasajeros.Add(pasajero);
                     }
 
