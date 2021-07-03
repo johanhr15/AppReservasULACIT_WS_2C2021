@@ -26,8 +26,9 @@ namespace WebApiSegura.Models
         public string AER_NOMBRE { get; set; }
         public string AER_TELEFONO { get; set; }
         public string AER_CORREO { get; set; }
-        public string AER_SEDE { get; set; }
         public string AER_SITIO_WEB { get; set; }
+        public string AER_SEDE { get; set; }
+       
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Avion> Avion { get; set; }

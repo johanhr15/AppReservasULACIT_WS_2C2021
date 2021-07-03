@@ -98,7 +98,7 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO AEROLINEA (AER_NOMBRE, 
-                                                            AER_TELEFONO, AER_CORREO, AER_SITO_WEB,
+                                                            AER_TELEFONO, AER_CORREO, AER_SITIO_WEB,
                                                             AER_SEDE)
                                                             VALUES (@AER_NOMBRE, 
                                                             @AER_TELEFONO, @AER_CORREO, @AER_SITIO_WEB,
@@ -138,9 +138,9 @@ namespace WebApiSegura.Controllers
                     SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new
-                        SqlCommand(@"UPDATE AEROLINEA SET AVI_CODIGO = @AVI_CODIGO, AER_NOMBRE = @AER_NOMBRE, 
+                        SqlCommand(@"UPDATE AEROLINEA SET   AER_NOMBRE = @AER_NOMBRE, 
                                                             AER_TELEFONO = @AER_TELEFONO, AER_CORREO = @AER_CORREO,
-                                                            AER_SITIO_WEB = @AER_SITO_WEB, AER_SEDE = @AER_SEDE
+                                                            AER_SITIO_WEB = @AER_SITIO_WEB, AER_SEDE = @AER_SEDE
                                     WHERE AER_CODIGO = @AER_CODIGO",
                                                             sqlConnection);
 
