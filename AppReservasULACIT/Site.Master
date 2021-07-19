@@ -56,7 +56,7 @@
                 </ul>
               </li>
               <li>
-                  <asp:LinkButton ID="lnkCerrarSesion"  runat="server">Cerrar sesion</asp:LinkButton></li>
+                  <asp:LinkButton ID="lnkCerrarSesion" onClick="lnkCerrarSesion_Click" runat="server">Cerrar sesion</asp:LinkButton></li>
             </ul>
           </div>
         </nav>
