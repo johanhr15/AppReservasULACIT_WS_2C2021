@@ -4,11 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSegura", "WebApiSegura\WebApiSegura.csproj", "{674304FA-21F3-42CD-AFE3-258295EC95D8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{11B9E4AE-A70D-42EC-82AD-7840E032694B} = {11B9E4AE-A70D-42EC-82AD-7840E032694B}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppReservasULACIT", "AppReservasULACIT\AppReservasULACIT.csproj", "{11B9E4AE-A70D-42EC-82AD-7840E032694B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{674304FA-21F3-42CD-AFE3-258295EC95D8} = {674304FA-21F3-42CD-AFE3-258295EC95D8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

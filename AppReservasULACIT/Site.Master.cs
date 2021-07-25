@@ -14,13 +14,13 @@ namespace AppReservasULACIT
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
             Response.Cache.SetExpires(DateTime.MinValue);
+
             base.OnInit(e);
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if(!IsPostBack)
             {
                 if (Session["CodigoUsuario"] == null)
                 {

@@ -14,6 +14,7 @@ namespace AppReservasULACIT.Controllers
     {
         string Url = "http://localhost:49220/api/hotel/";
 
+        //INICIALIZAR EL HTTPCLIENT (REQUEST)
         HttpClient GetClient(string token)
         {
             HttpClient client = new HttpClient();
