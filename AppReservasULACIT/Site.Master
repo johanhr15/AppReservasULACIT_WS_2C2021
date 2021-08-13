@@ -53,6 +53,8 @@
                   <li><a href="/Views/frmHotel.aspx">Hoteles</a></li>
                   <li><a href="/Views/frmHabitacion.aspx">Habitaciones</a></li>
                   <li><a href="/Views/frmReserva.aspx">Reservas</a></li>
+                    <li><a href="/Views/frmTiquete.aspx">Tiquetes</a></li>
+                    <li><a href="/Views/frmReservaVuelo.aspx">Reserva Vuelos</a></li>
                 </ul>
               </li>
               <li>

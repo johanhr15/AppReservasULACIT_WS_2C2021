@@ -57,7 +57,7 @@ namespace AppReservasULACIT
                         lblStatus.Visible = true;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     lblStatus.Text = "Hubo un error al registrar el usuario.";

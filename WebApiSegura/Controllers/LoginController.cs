@@ -112,6 +112,5 @@ namespace WebApiSegura.Controllers
 
             return Ok();
         }
-
     }
 }

@@ -202,6 +202,8 @@
     <Content Include="Views\frmHabitacion.aspx" />
     <Content Include="Views\frmHotel.aspx" />
     <Content Include="Views\frmReserva.aspx" />
+    <Content Include="Views\frmReservaVuelo.aspx" />
+    <Content Include="Views\frmTiquete.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -224,8 +226,15 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AerolineaManager.cs" />
+    <Compile Include="Controllers\AgenciaManager.cs" />
+    <Compile Include="Controllers\EscalaManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
+    <Compile Include="Controllers\PasajeroManager.cs" />
+    <Compile Include="Controllers\ReservaVueloManager.cs" />
+    <Compile Include="Controllers\TiqueteManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
+    <Compile Include="Controllers\VueloManager.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,11 +259,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aerolinea.cs" />
+    <Compile Include="Models\Agencia.cs" />
+    <Compile Include="Models\Escala.cs" />
     <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Pasajero.cs" />
     <Compile Include="Models\Reserva.cs" />
+    <Compile Include="Models\ReservaVuelo.cs" />
+    <Compile Include="Models\Tiquete.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -297,6 +313,20 @@
     </Compile>
     <Compile Include="Views\frmReserva.aspx.designer.cs">
       <DependentUpon>frmReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmReservaVuelo.aspx.cs">
+      <DependentUpon>frmReservaVuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmReservaVuelo.aspx.designer.cs">
+      <DependentUpon>frmReservaVuelo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmTiquete.aspx.cs">
+      <DependentUpon>frmTiquete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmTiquete.aspx.designer.cs">
+      <DependentUpon>frmTiquete.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

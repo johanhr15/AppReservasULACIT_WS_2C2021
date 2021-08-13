@@ -206,6 +206,7 @@
     <Compile Include="Controllers\TiqueteController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VueloController.cs" />
     <Compile Include="Global.asax.cs">

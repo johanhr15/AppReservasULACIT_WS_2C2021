@@ -37,5 +37,26 @@ namespace AppReservasULACIT.Controllers
             return JsonConvert.DeserializeObject<Usuario>(await response.Content.ReadAsStringAsync());
         }
 
+        string Url = "http://localhost:49220/api/Usuario/";
+
+        //INICIALIZAR EL HTTPCLIENT (REQUEST)
+        HttpClient GetClient(string token)
+        {
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("Authorization", token);
+            client.DefaultRequestHeaders.Add("Accept", "aplication/json");
+
+            return client;
+        }
+
+        public async Task<IEnumerable<Usuario>> ObtenerUsuarios(string token)
+        {
+            HttpClient httpClient = GetClient(token);
+
+            string resultado = await httpClient.GetStringAsync(Url);
+
+            return JsonConvert.DeserializeObject<IEnumerable<Usuario>>(resultado);
+        }
     }
 }
