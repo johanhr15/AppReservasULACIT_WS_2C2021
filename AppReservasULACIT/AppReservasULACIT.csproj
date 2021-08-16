@@ -199,6 +199,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\frmAeropuerto.aspx" />
+    <Content Include="Views\frmEscala.aspx" />
     <Content Include="Views\frmHabitacion.aspx" />
     <Content Include="Views\frmHotel.aspx" />
     <Content Include="Views\frmReserva.aspx" />
@@ -229,6 +231,7 @@
     <Compile Include="Controllers\AerolineaManager.cs" />
     <Compile Include="Controllers\AgenciaManager.cs" />
     <Compile Include="Controllers\EscalaManager.cs" />
+    <Compile Include="Controllers\AeropuertoManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PasajeroManager.cs" />
     <Compile Include="Controllers\ReservaVueloManager.cs" />
@@ -259,6 +262,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aeropuerto.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Agencia.cs" />
     <Compile Include="Models\Escala.cs" />
@@ -292,6 +296,20 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmAeropuerto.aspx.cs">
+      <DependentUpon>frmAeropuerto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAeropuerto.aspx.designer.cs">
+      <DependentUpon>frmAeropuerto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmEscala.aspx.cs">
+      <DependentUpon>frmEscala.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmEscala.aspx.designer.cs">
+      <DependentUpon>frmEscala.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmHabitacion.aspx.cs">
       <DependentUpon>frmHabitacion.aspx</DependentUpon>
