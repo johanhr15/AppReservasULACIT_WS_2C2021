@@ -143,6 +143,7 @@ namespace AppReservasULACIT.Views
             ltrTituloMantenimiento.Text = "Nuevo error";
             lblResultado.Text = string.Empty;
             txtCodigoMant.Text = string.Empty;
+            txtUsuCodigoMant.Text = string.Empty;
             txtFechaHoraMant.Text = string.Empty;
             txtFuenteMant.Text = string.Empty;
             txtNumero.Text = string.Empty;

@@ -19,7 +19,7 @@ namespace AppReservasULACIT.Controllers
         {
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("Authorization",token);
+            client.DefaultRequestHeaders.Add("Authorization", token);
             client.DefaultRequestHeaders.Add("Accept", "aplication/json");
 
             return client;
@@ -38,7 +38,7 @@ namespace AppReservasULACIT.Controllers
         {
             HttpClient httpClient = GetClient(token);
 
-            string resultado = await httpClient.GetStringAsync(string.Concat(Url,codigo));
+            string resultado = await httpClient.GetStringAsync(string.Concat(Url, codigo));
 
             return JsonConvert.DeserializeObject<Error>(resultado);
         }
