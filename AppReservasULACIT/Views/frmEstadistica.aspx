@@ -37,7 +37,7 @@
             CssClass="table table-striped" AlternatingRowStyle-BackColor="LightBlue" HeaderStyle-BackColor="Navy"
             HeaderStyle-ForeColor="White" Width="100%">
             <Columns>
-                <asp:BoundField HeaderText="Codigo" DataField="EST_CODIGO" />
+                 <asp:BoundField HeaderText="Codigo" DataField="EST_CODIGO" />
                  <asp:BoundField HeaderText="Codigo Usuario" DataField="USU_CODIGO" />
                  <asp:BoundField HeaderText="Fecha" DataField="EST_FEC_HORA"  />
                  <asp:BoundField HeaderText="Navegador" DataField="EST_NAVEGADOR" />

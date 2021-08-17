@@ -86,7 +86,7 @@ namespace AppReservasULACIT.Views
                             EST_FEC_HORA = Convert.ToDateTime(txtFechaMant.Text),
                             EST_NAVEGADOR = txtNavegadorMant.Text,
                             EST_PLATAFORMA_DISPOSITIVO = txtPlataforma.Text,
-                            EST_FABRICANTE_DISPOSTIVO = txtFabricante.Text,
+                            EST_FABRICANTE_DISPOSITIVO = txtFabricante.Text,
                             EST_VISTA = txtVista.Text,
                             EST_ACCION = txtAccion.Text
                         };
@@ -110,7 +110,7 @@ namespace AppReservasULACIT.Views
                             EST_FEC_HORA = Convert.ToDateTime(txtFechaMant.Text),
                             EST_NAVEGADOR = txtNavegadorMant.Text,
                             EST_PLATAFORMA_DISPOSITIVO = txtPlataforma.Text,
-                            EST_FABRICANTE_DISPOSTIVO = txtFabricante.Text,
+                            EST_FABRICANTE_DISPOSITIVO = txtFabricante.Text,
                             EST_VISTA = txtVista.Text,
                             EST_ACCION = txtAccion.Text
                         };
