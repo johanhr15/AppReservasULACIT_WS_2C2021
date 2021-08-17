@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 namespace AppReservasULACIT.Views
 {
 
@@ -70,6 +71,9 @@ namespace AppReservasULACIT.Views
 
         protected async void btnAceptarMant_Click(object sender, EventArgs e)
         {
+            lblResultado.Text = "";
+            lblResultado.Visible = false;
+
             try
             {
                 if (Page.IsValid)
@@ -78,7 +82,7 @@ namespace AppReservasULACIT.Views
                     {
                         Estadistica estadistica = new Estadistica()
                         {
-                            USU_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                            USU_CODIGO = Convert.ToInt32(txtUsuCodigoMant.Text),
                             EST_FEC_HORA = Convert.ToDateTime(txtFechaMant.Text),
                             EST_NAVEGADOR = txtNavegadorMant.Text,
                             EST_PLATAFORMA_DISPOSITIVO = txtPlataforma.Text,
@@ -102,7 +106,7 @@ namespace AppReservasULACIT.Views
                         Estadistica estadistica = new Estadistica()
                         {
                             EST_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            USU_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                            USU_CODIGO = Convert.ToInt32(txtUsuCodigoMant.Text),
                             EST_FEC_HORA = Convert.ToDateTime(txtFechaMant.Text),
                             EST_NAVEGADOR = txtNavegadorMant.Text,
                             EST_PLATAFORMA_DISPOSITIVO = txtPlataforma.Text,
@@ -140,6 +144,7 @@ namespace AppReservasULACIT.Views
         {
             ltrTituloMantenimiento.Text = "Nueva estadistica";
             lblResultado.Text = string.Empty;
+            txtCodigoMant.Text = string.Empty;
             txtUsuCodigoMant.Text = string.Empty;
             txtFechaMant.Text = string.Empty;
             txtPlataforma.Text = string.Empty;
