@@ -201,6 +201,9 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\frmAeropuerto.aspx" />
     <Content Include="Views\frmEscala.aspx" />
+    <Content Include="Views\frmError.aspx" />
+    <Content Include="Views\frmEstadistica.aspx" />
+    <Content Include="Views\frmSesion.aspx" />
     <Content Include="Views\frmHabitacion.aspx" />
     <Content Include="Views\frmHotel.aspx" />
     <Content Include="Views\frmReserva.aspx" />
@@ -232,6 +235,10 @@
     <Compile Include="Controllers\AgenciaManager.cs" />
     <Compile Include="Controllers\EscalaManager.cs" />
     <Compile Include="Controllers\AeropuertoManager.cs" />
+    <Compile Include="Controllers\HabitacionManager.cs" />
+    <Compile Include="Controllers\EstadisticaManager.cs" />
+    <Compile Include="Controllers\ErrorManager.cs" />
+    <Compile Include="Controllers\SesionManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PasajeroManager.cs" />
     <Compile Include="Controllers\ReservaVueloManager.cs" />
@@ -262,6 +269,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\Estadistica.cs" />
+    <Compile Include="Models\Sesion.cs" />
     <Compile Include="Models\Aeropuerto.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Agencia.cs" />
@@ -310,6 +320,27 @@
     </Compile>
     <Compile Include="Views\frmEscala.aspx.designer.cs">
       <DependentUpon>frmEscala.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmError.aspx.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmError.aspx.designer.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmEstadistica.aspx.cs">
+      <DependentUpon>frmEstadistica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmEstadistica.aspx.designer.cs">
+      <DependentUpon>frmEstadistica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSesion.aspx.cs">
+      <DependentUpon>frmSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmSesion.aspx.designer.cs">
+      <DependentUpon>frmSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmHabitacion.aspx.cs">
       <DependentUpon>frmHabitacion.aspx</DependentUpon>

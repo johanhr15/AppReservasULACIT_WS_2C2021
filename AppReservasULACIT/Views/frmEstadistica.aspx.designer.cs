@@ -11,17 +11,17 @@ namespace AppReservasULACIT.Views
 {
 
 
-    public partial class frmHabitacion
+    public partial class frmEstadistica
     {
 
         /// <summary>
-        /// Contrôle gvHabitaciones.
+        /// Contrôle gvEstadisticas.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvHabitaciones;
+        protected global::System.Web.UI.WebControls.GridView gvEstadisticas;
 
         /// <summary>
         /// Contrôle btnNuevo.
@@ -105,130 +105,130 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtCodigoMant;
 
         /// <summary>
-        /// Contrôle ltrHotelCodigoMant.
+        /// Contrôle ltrUsuCodigoMant.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrHotelCodigoMant;
+        protected global::System.Web.UI.WebControls.Literal ltrUsuCodigoMant;
 
         /// <summary>
-        /// Contrôle txtHotelCodigoMant.
+        /// Contrôle txtUsuCodigoMant.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHotelCodigoMant;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuCodigoMant;
 
         /// <summary>
-        /// Contrôle ltrNumero.
+        /// Contrôle ltrFecha.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrNumero;
+        protected global::System.Web.UI.WebControls.Literal ltrFecha;
 
         /// <summary>
-        /// Contrôle txtNumeroMant.
+        /// Contrôle txtFechaMant.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroMant;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaMant;
 
         /// <summary>
-        /// Contrôle ltrCapacidad.
+        /// Contrôle ltrNavegador.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCapacidad;
+        protected global::System.Web.UI.WebControls.Literal ltrNavegador;
 
         /// <summary>
-        /// Contrôle txtCapacidadMant.
+        /// Contrôle txtNavegadorMant.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacidadMant;
+        protected global::System.Web.UI.WebControls.TextBox txtNavegadorMant;
 
         /// <summary>
-        /// Contrôle ltrTipo.
+        /// Contrôle ltrPlataforma.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrTipo;
+        protected global::System.Web.UI.WebControls.Literal ltrPlataforma;
 
         /// <summary>
-        /// Contrôle txtTipo.
+        /// Contrôle txtPlataforma.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipo;
+        protected global::System.Web.UI.WebControls.TextBox txtPlataforma;
 
         /// <summary>
-        /// Contrôle ltrDescripcion.
+        /// Contrôle ltrFabricante.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrDescripcion;
+        protected global::System.Web.UI.WebControls.Literal ltrFabricante;
 
         /// <summary>
-        /// Contrôle txtDescripcion.
+        /// Contrôle txtFabricante.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtFabricante;
 
         /// <summary>
-        /// Contrôle ltrEstado.
+        /// Contrôle ltrVista.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrEstado;
+        protected global::System.Web.UI.WebControls.Literal ltrVista;
 
         /// <summary>
-        /// Contrôle txtEstado.
+        /// Contrôle txtVista.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstado;
+        protected global::System.Web.UI.WebControls.TextBox txtVista;
 
         /// <summary>
-        /// Contrôle ltrPrecio.
+        /// Contrôle ltrAccion.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrPrecio;
+        protected global::System.Web.UI.WebControls.Literal ltrAccion;
 
         /// <summary>
-        /// Contrôle txtPrecio.
+        /// Contrôle txtAccion.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecio;
+        protected global::System.Web.UI.WebControls.TextBox txtAccion;
 
         /// <summary>
         /// Contrôle lblResultado.

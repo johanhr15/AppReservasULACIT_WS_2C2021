@@ -57,6 +57,9 @@
                     <li><a href="/Views/frmReservaVuelo.aspx">Reserva Vuelos</a></li>
                     <li><a href="/Views/frmAeropuerto.aspx">Aeropuerto</a></li>
                     <li><a href="/Views/frmEscala.aspx">Escala</a></li>
+                    <li><a href="/Views/frmError.aspx">Error</a></li>
+                    <li><a href="/Views/frmEstadistica.aspx">Estadistica</a></li>
+                    <li><a href="/Views/frmSesion.aspx">Sesion</a></li>
                 </ul>
               </li>
               <li>

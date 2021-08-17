@@ -9,13 +9,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace AppReservasULACIT.Views
 {
-    public partial class frmHabitacion : System.Web.UI.Page
+    public partial class frmError : System.Web.UI.Page
     {
-        IEnumerable<Habitacion> habitaciones = new ObservableCollection<Habitacion>();
-        HabitacionManager habitacionManager = new HabitacionManager();
+        IEnumerable<Error> errores = new ObservableCollection<Error>();
+        ErrorManager errorManager = new ErrorManager();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,14 +28,13 @@ namespace AppReservasULACIT.Views
                     InicializarControles();
             }
         }
-
         private async void InicializarControles()
         {
             try
             {
-                habitaciones = await habitacionManager.ObtenerHabitaciones(Session["Token"].ToString());
-                gvHabitaciones.DataSource = habitaciones.ToList();
-                gvHabitaciones.DataBind();
+                errores = await errorManager.ObtenerErrores(Session["Token"].ToString());
+                gvErrores.DataSource = errores.ToList();
+                gvErrores.DataBind();
             }
             catch (Exception exc)
             {
@@ -50,10 +48,10 @@ namespace AppReservasULACIT.Views
             try
             {
                 string resultado = string.Empty;
-                resultado = await habitacionManager.Eliminar(lblCodigoEliminar.Text, Session["Token"].ToString());
+                resultado = await errorManager.Eliminar(lblCodigoEliminar.Text, Session["Token"].ToString());
                 if (!string.IsNullOrEmpty(resultado))
                 {
-                    ltrModalMensaje.Text = "Habitacion eliminada";
+                    ltrModalMensaje.Text = "Error eliminado";
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
                 }
@@ -69,6 +67,7 @@ namespace AppReservasULACIT.Views
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
         }
+
         protected async void btnAceptarMant_Click(object sender, EventArgs e)
         {
             try
@@ -77,23 +76,23 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Habitacion habitacion = new Habitacion()
+                        Error error = new Error()
                         {
-                            HOT_CODIGO = Convert.ToInt32(txtHotelCodigoMant.Text),
-                            HAB_NUMERO = Convert.ToInt32(txtNumeroMant.Text),
-                            HAB_CAPACIDAD = Convert.ToInt32(txtCapacidadMant.Text),
-                            HAB_TIPO = txtTipo.Text,
-                            HAB_DESCRIPCION = txtDescripcion.Text,
-                            HAB_ESTADO = txtEstado.Text,
-                            HAB_PRECIO = Convert.ToDecimal(txtPrecio.Text)
+                            USU_CODIGO = Convert.ToInt32(txtUsuCodigoMant.Text),
+                            ERR_FEC_HORA = Convert.ToDateTime(txtFechaHoraMant.Text),
+                            ERR_FUENTE = txtFuenteMant.Text,
+                            ERR_NUMERO = txtNumero.Text,
+                            ERR_DESCRIPCION = txtDescripcion.Text,
+                            ERR_VISTA = txtVista.Text,
+                            ERR_ACCION = txtAccion.Text,
 
                         };
 
-                        Habitacion respuestaHabitacion = await habitacionManager.Ingresar(habitacion, Session["Token"].ToString());
+                        Error respuestaError = await errorManager.Ingresar(error, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaHabitacion.HAB_ESTADO))
+                        if (!string.IsNullOrEmpty(respuestaError.ERR_DESCRIPCION))
                         {
-                            lblResultado.Text = "Hotel ingresado con exito";
+                            lblResultado.Text = "Error ingresado con exito";
                             lblResultado.Visible = true;
                             lblResultado.ForeColor = Color.Green;
                             InicializarControles();
@@ -101,23 +100,24 @@ namespace AppReservasULACIT.Views
                     }
                     else//MODIFICAR
                     {
-                        Habitacion habitacion = new Habitacion()
+                        Error error = new Error()
                         {
-                            HAB_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            HOT_CODIGO = Convert.ToInt32(txtHotelCodigoMant.Text),
-                            HAB_NUMERO = Convert.ToInt32(txtNumeroMant.Text),
-                            HAB_CAPACIDAD = Convert.ToInt32(txtCapacidadMant.Text),
-                            HAB_TIPO = txtTipo.Text,
-                            HAB_DESCRIPCION = txtDescripcion.Text,
-                            HAB_ESTADO = txtEstado.Text,
-                            HAB_PRECIO = Convert.ToDecimal(txtPrecio.Text)
+                            ERR_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                            USU_CODIGO = Convert.ToInt32(txtUsuCodigoMant.Text),
+                            ERR_FEC_HORA = Convert.ToDateTime(txtFechaHoraMant.Text),
+                            ERR_FUENTE = txtFuenteMant.Text,
+                            ERR_NUMERO = txtNumero.Text,
+                            ERR_DESCRIPCION = txtDescripcion.Text,
+                            ERR_VISTA = txtVista.Text,
+                            ERR_ACCION = txtAccion.Text,
+
                         };
 
-                        Habitacion respuestaHabitacion = await habitacionManager.Actualizar(habitacion, Session["Token"].ToString());
+                        Error respuestaError = await errorManager.Actualizar(error, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaHabitacion.HAB_ESTADO))
+                        if (!string.IsNullOrEmpty(respuestaError.ERR_DESCRIPCION))
                         {
-                            lblResultado.Text = "Habitacion modificada con exito";
+                            lblResultado.Text = "Error modificado con exito";
                             lblResultado.Visible = true;
                             lblResultado.ForeColor = Color.Green;
                             InicializarControles();
@@ -131,6 +131,7 @@ namespace AppReservasULACIT.Views
                 lblStatus.Visible = true;
             }
         }
+
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
@@ -139,16 +140,15 @@ namespace AppReservasULACIT.Views
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            ltrTituloMantenimiento.Text = "Nueva habitacion";
+            ltrTituloMantenimiento.Text = "Nuevo error";
             lblResultado.Text = string.Empty;
             txtCodigoMant.Text = string.Empty;
-            txtHotelCodigoMant.Text = string.Empty;
-            txtNumeroMant.Text = string.Empty;
-            txtCapacidadMant.Text = string.Empty;
-            txtTipo.Text = string.Empty;
+            txtFechaHoraMant.Text = string.Empty;
+            txtFuenteMant.Text = string.Empty;
+            txtNumero.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
-            txtEstado.Text = string.Empty;
-            txtPrecio.Text = string.Empty;
+            txtVista.Text = string.Empty;
+            txtAccion.Text = string.Empty;
 
             LimpiarControles();
 
@@ -165,30 +165,31 @@ namespace AppReservasULACIT.Views
 
             }
         }
-        protected void gvHabitaciones_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        protected void gvErrores_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow fila = gvHabitaciones.Rows[index];
+            GridViewRow fila = gvErrores.Rows[index];
 
             switch (e.CommandName)
             {
                 case "Modificar":
-                    ltrTituloMantenimiento.Text = "Modificar habitacion";
+                    ltrTituloMantenimiento.Text = "Modificar error";
                     txtCodigoMant.Text = fila.Cells[0].Text;
-                    txtHotelCodigoMant.Text = fila.Cells[1].Text;
-                    txtNumeroMant.Text = fila.Cells[2].Text;
-                    txtCapacidadMant.Text = fila.Cells[3].Text;
-                    txtTipo.Text = fila.Cells[4].Text;
+                    txtUsuCodigoMant.Text = fila.Cells[1].Text;
+                    txtFechaHoraMant.Text = fila.Cells[2].Text;
+                    txtFuenteMant.Text = fila.Cells[3].Text;
+                    txtNumero.Text = fila.Cells[4].Text;
                     txtDescripcion.Text = fila.Cells[5].Text;
-                    txtEstado.Text = fila.Cells[6].Text;
-                    txtPrecio.Text = fila.Cells[7].Text;
+                    txtVista.Text = fila.Cells[6].Text;
+                    txtAccion.Text = fila.Cells[7].Text;
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
                 case "Eliminar":
                     lblCodigoEliminar.Text = fila.Cells[0].Text;
                     lblCodigoEliminar.Visible = false;
-                    ltrModalMensaje.Text = "Confirme que desea eliminar la habitacion " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;
+                    ltrModalMensaje.Text = "Confirme que desea eliminar el error " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;
                     ScriptManager.RegisterStartupScript(this,
                this.GetType(), "LaunchServerSide", "$(function() {openModal(); } );", true);
 
