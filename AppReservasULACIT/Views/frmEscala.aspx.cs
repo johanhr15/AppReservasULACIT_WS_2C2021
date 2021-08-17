@@ -71,6 +71,9 @@ namespace AppReservasULACIT.Views
 
         protected async void btnAceptarMant_Click(object sender, EventArgs e)
         {
+            lblResultado.Text = "";
+            lblResultado.Visible = false;
+
             try
             {
                 if (Page.IsValid)

@@ -89,12 +89,12 @@
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrNumeroTerminalMant" Text="NumeroTerminal" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtNumeroTerminalMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox TextMode="Number" ID="txtNumeroTerminalMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                              
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCodigoAero" Text="CodigoAeropuerto" runat="server"></asp:Literal></td>
-                             <td><asp:TextBox ID="txtCodigoAeroMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                             <td><asp:TextBox TextMode="Number" ID="txtCodigoAeroMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTiempoEspera" Text="TiempoEspera" runat="server"></asp:Literal></td>
