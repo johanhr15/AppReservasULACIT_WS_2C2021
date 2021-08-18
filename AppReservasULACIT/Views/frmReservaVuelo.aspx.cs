@@ -116,44 +116,86 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        ReservaVuelo reservaVuelo = new ReservaVuelo()
+                        try 
                         {
-                            USU_CODIGO = Convert.ToInt32(ddlCodigoUsuario.SelectedValue),
-                            AGE_CODIGO = Convert.ToInt32(ddlCodigoAgencia.SelectedValue),
-                            RVU_MONEDA = ddlReservaVueloMoneda.SelectedValue,
-                            RVU_PRECIO_TOTAL = Convert.ToDecimal(txtPrecioTotalReservaVuelo.Text),
-                            RVU_FECHA = Convert.ToDateTime(txtFecha.Text),
-                        };
+                            if (Convert.ToDateTime(txtFecha.Text) >= DateTime.Now)
+                            {
+                                txtFecha.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                                ReservaVuelo reservaVuelo = new ReservaVuelo()
+                                {
+                                    USU_CODIGO = Convert.ToInt32(ddlCodigoUsuario.SelectedValue),
+                                    AGE_CODIGO = Convert.ToInt32(ddlCodigoAgencia.SelectedValue),
+                                    RVU_MONEDA = ddlReservaVueloMoneda.SelectedValue,
+                                    RVU_PRECIO_TOTAL = Convert.ToDecimal(txtPrecioTotalReservaVuelo.Text),
+                                    RVU_FECHA = Convert.ToDateTime(txtFecha.Text),
+                                };
 
-                        ReservaVuelo respuestaReservaVuelo = await reservaVueloManager.Ingresar(reservaVuelo, Session["Token"].ToString());
+                                ReservaVuelo respuestaReservaVuelo = await reservaVueloManager.Ingresar(reservaVuelo, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaReservaVuelo.RVU_MONEDA))
+                                if (!string.IsNullOrEmpty(respuestaReservaVuelo.RVU_MONEDA))
+                                {
+                                    lblResultado.Text = "Reserva de Vuelo ingresada con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        } catch 
                         {
-                            lblResultado.Text = "Reserva de Vuelo ingresada con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
+                            
                     }
                     else//MODIFICAR
                     {
-                        ReservaVuelo reservaVuelo = new ReservaVuelo()
+                        try 
                         {
-                            RVU_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            USU_CODIGO = Convert.ToInt32(ddlCodigoUsuario.SelectedValue),
-                            AGE_CODIGO = Convert.ToInt32(ddlCodigoAgencia.SelectedValue),
-                            RVU_MONEDA = ddlReservaVueloMoneda.SelectedValue,
-                            RVU_PRECIO_TOTAL = Convert.ToDecimal(txtPrecioTotalReservaVuelo.Text),
-                            RVU_FECHA = Convert.ToDateTime(txtFecha.Text),
-                        };
+                            if (Convert.ToDateTime(txtFecha.Text) >= DateTime.Now && !string.IsNullOrEmpty(txtFecha.Text))
+                            {
+                                txtFecha.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                                ReservaVuelo reservaVuelo = new ReservaVuelo()
+                                {
+                                    RVU_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                                    USU_CODIGO = Convert.ToInt32(ddlCodigoUsuario.SelectedValue),
+                                    AGE_CODIGO = Convert.ToInt32(ddlCodigoAgencia.SelectedValue),
+                                    RVU_MONEDA = ddlReservaVueloMoneda.SelectedValue,
+                                    RVU_PRECIO_TOTAL = Convert.ToDecimal(txtPrecioTotalReservaVuelo.Text),
+                                    RVU_FECHA = Convert.ToDateTime(txtFecha.Text),
+                                };
 
-                        ReservaVuelo respuestaReservaVuelo = await reservaVueloManager.Actualizar(reservaVuelo, Session["Token"].ToString());
+                                ReservaVuelo respuestaReservaVuelo = await reservaVueloManager.Actualizar(reservaVuelo, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaReservaVuelo.RVU_MONEDA))
+                                if (!string.IsNullOrEmpty(respuestaReservaVuelo.RVU_MONEDA))
+                                {
+                                    lblResultado.Text = "Reserva de Vuelo Modificada con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
                         {
-                            lblResultado.Text = "Reserva de Vuelo ingresada con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
@@ -161,7 +203,7 @@ namespace AppReservasULACIT.Views
             }
             catch (Exception exc)
             {
-                lblStatus.Text = "Hubo un error en la operacion. Detalle: " + exc.Message;
+                lblStatus.Text = "Hubo un error en la operacion. Detalles: " + exc.Message;
                 lblStatus.Visible = true;
             }
         }

@@ -209,7 +209,7 @@ namespace AppReservasULACIT.Views
 
                         if (!string.IsNullOrEmpty(respuestaTiquete.TIQ_ALIMENTACION))
                         {
-                            lblResultado.Text = "Tiquete modificado con exito";
+                            lblResultado.Text = "Tiquete Modificado con exito";
                             lblResultado.Visible = true;
                             lblResultado.ForeColor = Color.Green;
                             InicializarControles();
