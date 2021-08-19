@@ -167,7 +167,7 @@ namespace AppReservasULACIT.Views
                     {
                         Tiquete tiquete = new Tiquete()
                         {
-                            AER_CODIGO = Convert.ToInt32(ddlCodigoAerolinea.SelectedValue),
+                            
                             ESC_CODIGO = Convert.ToInt32(ddlCodigoEscala.SelectedValue),
                             PAS_CODIGO = Convert.ToInt32(ddlCodigoPasajero.SelectedValue),
                             VUE_CODIGO = Convert.ToInt32(ddlCodigoVuelo.SelectedValue),

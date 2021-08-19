@@ -54,6 +54,9 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.11.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.11.1\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -99,9 +102,6 @@
     </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -199,6 +199,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\frmAvion.aspx" />
     <Content Include="Views\frmAeropuerto.aspx" />
     <Content Include="Views\frmEscala.aspx" />
     <Content Include="Views\frmError.aspx" />
@@ -208,6 +209,7 @@
     <Content Include="Views\frmHotel.aspx" />
     <Content Include="Views\frmReserva.aspx" />
     <Content Include="Views\frmReservaVuelo.aspx" />
+    <Content Include="Views\frmAsiento.aspx" />
     <Content Include="Views\frmTiquete.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -233,6 +235,7 @@
     </Compile>
     <Compile Include="Controllers\AerolineaManager.cs" />
     <Compile Include="Controllers\AgenciaManager.cs" />
+    <Compile Include="Controllers\AvionManager.cs" />
     <Compile Include="Controllers\EscalaManager.cs" />
     <Compile Include="Controllers\AeropuertoManager.cs" />
     <Compile Include="Controllers\HabitacionManager.cs" />
@@ -242,6 +245,7 @@
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PasajeroManager.cs" />
     <Compile Include="Controllers\ReservaVueloManager.cs" />
+    <Compile Include="Controllers\AsientoManager.cs" />
     <Compile Include="Controllers\TiqueteManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
     <Compile Include="Controllers\VueloManager.cs" />
@@ -275,6 +279,8 @@
     <Compile Include="Models\Aeropuerto.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Agencia.cs" />
+    <Compile Include="Models\Asiento.cs" />
+    <Compile Include="Models\Avion.cs" />
     <Compile Include="Models\Escala.cs" />
     <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Hotel.cs" />
@@ -306,6 +312,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmAvion.aspx.cs">
+      <DependentUpon>frmAvion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAvion.aspx.designer.cs">
+      <DependentUpon>frmAvion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmAeropuerto.aspx.cs">
       <DependentUpon>frmAeropuerto.aspx</DependentUpon>
@@ -369,6 +382,13 @@
     </Compile>
     <Compile Include="Views\frmReservaVuelo.aspx.designer.cs">
       <DependentUpon>frmReservaVuelo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmAsiento.aspx.cs">
+      <DependentUpon>frmAsiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAsiento.aspx.designer.cs">
+      <DependentUpon>frmAsiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmTiquete.aspx.cs">
       <DependentUpon>frmTiquete.aspx</DependentUpon>
