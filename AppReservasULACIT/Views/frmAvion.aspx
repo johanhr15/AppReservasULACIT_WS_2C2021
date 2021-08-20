@@ -104,6 +104,9 @@
                             <td><asp:Literal ID="ltrModelo" Text="Modelo" runat="server" /></td>
                             <td><asp:TextBox ID="txtModelo" CssClass="form-control" runat="server"> 
                             </asp:TextBox></td>
+
+                             <td><asp:RequiredFieldValidator ID="rfvModelo" runat="server"
+                              ErrorMessage=" *Espacio Obligatorio*" ControlToValidate="txtModelo" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
 
                         <tr>
@@ -120,12 +123,20 @@
                             <td><asp:Literal ID="ltrCapacidad" Text="Capacidad" runat="server" /></td>
                             <td><asp:TextBox ID="txtCapacidad" CssClass="form-control" runat="server"> 
                             </asp:TextBox></td>
+
+                            <td><asp:RequiredFieldValidator ID="rfvCapacidad" runat="server"
+                              ErrorMessage=" *Espacio Obligatorio*" ControlToValidate="txtCapacidad" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+
+
                         </tr>
 
                          <tr>
                             <td><asp:Literal ID="ltrEquipaje" Text="Equipaje" runat="server" /></td>
                             <td><asp:TextBox ID="txtEquipaje" CssClass="form-control" runat="server"> 
                             </asp:TextBox></td>
+
+                             <td><asp:RequiredFieldValidator ID="rfvEquipaje" runat="server"
+                              ErrorMessage=" *Espacio Obligatorio*" ControlToValidate="txtEquipaje" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                      
                     </table>

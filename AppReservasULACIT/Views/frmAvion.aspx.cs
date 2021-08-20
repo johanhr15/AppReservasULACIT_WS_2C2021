@@ -181,6 +181,9 @@ namespace AppReservasULACIT.Views
             ltrTituloMantenimiento.Text = "Nuevo Avion";
             lblResultado.Text = string.Empty;
             txtCodigoMant.Text = string.Empty;
+            txtCapacidad.Text = string.Empty;
+            txtEquipaje.Text = string.Empty;
+            txtModelo.Text = string.Empty;
 
             LimpiarControles();
 

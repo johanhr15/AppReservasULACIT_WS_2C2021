@@ -85,7 +85,7 @@ namespace AppReservasULACIT.Views
                         Asiento asiento = new Asiento()
                         {
                             ASI_FILA = txtFila.Text,
-                            ASI_LETRA = txtAsiLetra.Text,
+                            ASI_LETRA = ddlAsiLetra.SelectedValue,
                             ASI_DESCRIPCION = ddlAsiDescripcion.SelectedValue,
                             ASI_CLASE = ddlAsiClase.SelectedValue
 
@@ -107,7 +107,7 @@ namespace AppReservasULACIT.Views
                         {
                             ASI_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
                             ASI_FILA = txtFila.Text,
-                            ASI_LETRA = txtAsiLetra.Text,
+                            ASI_LETRA = ddlAsiLetra.SelectedValue,
                             ASI_DESCRIPCION = ddlAsiDescripcion.SelectedValue,
                             ASI_CLASE = ddlAsiClase.SelectedValue,
                         };
@@ -142,6 +142,8 @@ namespace AppReservasULACIT.Views
             ltrTituloMantenimiento.Text = "Nuevo Asiento";
             lblResultado.Text = string.Empty;
             txtCodigoMant.Text = string.Empty;
+            txtFila.Text = string.Empty;
+           
 
             LimpiarControles();
 
@@ -172,7 +174,7 @@ namespace AppReservasULACIT.Views
                     ltrTituloMantenimiento.Text = "Modificar Asiento";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     txtFila.Text = fila.Cells[1].Text;
-                    txtAsiLetra.Text = fila.Cells[2].Text;
+                    ddlAsiLetra.SelectedValue = fila.Cells[2].Text;
                     ddlAsiDescripcion.SelectedValue = fila.Cells[3].Text;
                     ddlAsiClase.SelectedValue = fila.Cells[4].Text;
 

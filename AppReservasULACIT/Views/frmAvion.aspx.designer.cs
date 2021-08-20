@@ -168,6 +168,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtModelo;
 
         /// <summary>
+        /// rfvModelo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvModelo;
+
+        /// <summary>
         /// ltrTipoRuta control.
         /// </summary>
         /// <remarks>
@@ -204,6 +213,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtCapacidad;
 
         /// <summary>
+        /// rfvCapacidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCapacidad;
+
+        /// <summary>
         /// ltrEquipaje control.
         /// </summary>
         /// <remarks>
@@ -220,6 +238,15 @@ namespace AppReservasULACIT.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEquipaje;
+
+        /// <summary>
+        /// rfvEquipaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEquipaje;
 
         /// <summary>
         /// btnAceptarMant control.

@@ -132,6 +132,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtFila;
 
         /// <summary>
+        /// rfvFila control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFila;
+
+        /// <summary>
         /// ltrAsiLetra control.
         /// </summary>
         /// <remarks>
@@ -141,13 +150,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrAsiLetra;
 
         /// <summary>
-        /// txtAsiLetra control.
+        /// ddlAsiLetra control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAsiLetra;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAsiLetra;
 
         /// <summary>
         /// ltrAsiDescripcion control.

@@ -89,13 +89,25 @@
                         </tr>
                       <tr>
                             <td><asp:Literal ID="ltrAsiFila" Text="Fila" runat="server" /></td>
-                            <td><asp:TextBox TextMode="Number" ID="txtFila" CssClass="form-control" runat="server"> 
-                            </asp:TextBox></td>
+                            <td><asp:TextBox TextMode="Number" ID="txtFila" CssClass="form-control" runat="server"></asp:TextBox></td>
+
+                             <td><asp:RequiredFieldValidator ID="rfvFila" runat="server"
+                              ErrorMessage=" *Espacio Obligatorio*" ControlToValidate="txtFila" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                            
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrAsiLetra" Text="Letra" runat="server" /></td>
-                            <td><asp:TextBox onkeypress="return isNumberOrLetter(event)" ID="txtAsiLetra" CssClass="form-control" runat="server"> 
-                            </asp:TextBox></td>
+                             <td><asp:DropDownList ID="ddlAsiLetra" CssClass="form-control" runat="server">
+                                <asp:ListItem Selected="True" Value="A">A</asp:ListItem>
+                                <asp:ListItem Value="B">B</asp:ListItem>
+                                 <asp:ListItem Value="C">C</asp:ListItem>
+                                 <asp:ListItem Value="D">D</asp:ListItem>
+                                 <asp:ListItem Value="E">E</asp:ListItem>
+                                 <asp:ListItem Value="F">F</asp:ListItem>
+                                 <asp:ListItem Value="G">G</asp:ListItem>
+                                 <asp:ListItem Value="H">H</asp:ListItem>
+
+                                  </asp:DropDownList></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrAsiDescripcion" Text="Descripcion" runat="server" /></td>
