@@ -142,6 +142,7 @@ namespace WebApiSegura.Controllers
                     SqlCommand sqlCommand = new
                         SqlCommand(@"UPDATE AEROPUERTO SET ARP_PAIS = @ARP_PAIS, 
                                                            ARP_CIUDAD = @ARP_CIUDAD, ARP_ZONA_HORARIA = @ARP_ZONA_HORARIA,
+                                                           ARP_VISA = @ARP_VISA,
                                                            ARP_CONTROL_VACUNAS = @ARP_CONTROL_VACUNAS
                                                            WHERE ARP_CODIGO = @ARP_CODIGO",
                                                             sqlConnection);
@@ -149,6 +150,7 @@ namespace WebApiSegura.Controllers
                     sqlCommand.Parameters.AddWithValue("@ARP_PAIS", aeropuerto.ARP_PAIS);
                     sqlCommand.Parameters.AddWithValue("@ARP_CIUDAD", aeropuerto.ARP_CIUDAD);
                     sqlCommand.Parameters.AddWithValue("@ARP_ZONA_HORARIA", aeropuerto.ARP_ZONA_HORARIA);
+                    sqlCommand.Parameters.AddWithValue("@ARP_VISA", aeropuerto.ARP_VISA);
                     sqlCommand.Parameters.AddWithValue("@ARP_CONTROL_VACUNAS", aeropuerto.ARP_CONTROL_VACUNAS);
 
                     sqlConnection.Open();

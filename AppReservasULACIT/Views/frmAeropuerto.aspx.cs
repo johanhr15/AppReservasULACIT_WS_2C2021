@@ -85,8 +85,8 @@ namespace AppReservasULACIT.Views
                             ARP_PAIS = txtPaisMant.Text,
                             ARP_CIUDAD = txtCiudadMant.Text,
                             ARP_ZONA_HORARIA = txtZonaHorariaMant.Text,
-                            ARP_VISA = txtVisa.Text,
-                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text
+                            ARP_VISA = ddlVisaRequerida.SelectedValue,
+                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text,
                         };
 
                         Aeropuerto respuestaAeropuerto = await aeropuertoManager.Ingresar(aeropuerto, Session["Token"].ToString());
@@ -107,8 +107,8 @@ namespace AppReservasULACIT.Views
                             ARP_PAIS = txtPaisMant.Text,
                             ARP_CIUDAD = txtCiudadMant.Text,
                             ARP_ZONA_HORARIA = txtZonaHorariaMant.Text,
-                            ARP_VISA = txtVisa.Text,
-                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text
+                            ARP_VISA = ddlVisaRequerida.SelectedValue,
+                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text,
                         };
 
                         Aeropuerto respuestaAeropuerto = await aeropuertoManager.Actualizar(aeropuerto, Session["Token"].ToString());
@@ -144,7 +144,7 @@ namespace AppReservasULACIT.Views
             txtPaisMant.Text = string.Empty;
             txtCiudadMant.Text = string.Empty;
             txtZonaHorariaMant.Text = string.Empty;
-            txtVisa.Text = string.Empty;
+            ddlVisaRequerida.SelectedValue = string.Empty;
             txtControlVacunas.Text = string.Empty;
 
             LimpiarControles();
@@ -176,7 +176,7 @@ namespace AppReservasULACIT.Views
                     txtPaisMant.Text = fila.Cells[1].Text;
                     txtCiudadMant.Text = fila.Cells[2].Text;
                     txtZonaHorariaMant.Text = fila.Cells[3].Text;
-                    txtVisa.Text = fila.Cells[4].Text;
+                    ddlVisaRequerida.SelectedValue = fila.Cells[4].Text;
                     txtControlVacunas.Text = fila.Cells[5].Text;
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);

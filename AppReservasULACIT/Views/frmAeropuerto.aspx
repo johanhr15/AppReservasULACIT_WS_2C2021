@@ -104,7 +104,12 @@
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrVisa" Text="Visa" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtVisa" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:DropDownList ID="ddlVisaRequerida" CssClass="form-control" runat="server">
+                                <asp:ListItem Selected="True" Value="No">No</asp:ListItem>
+                                <asp:ListItem Value="Americana">Americana</asp:ListItem>
+                                <asp:ListItem Value="Europea">Europea</asp:ListItem>
+                                <asp:ListItem Value="Canadiense">Canadiense</asp:ListItem>
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrControlVacunas" Text="ControlVacunas" runat="server" /></td>
