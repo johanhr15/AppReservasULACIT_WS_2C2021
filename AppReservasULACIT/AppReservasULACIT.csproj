@@ -201,12 +201,14 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\frmAvion.aspx" />
     <Content Include="Views\frmAeropuerto.aspx" />
+    <Content Include="Views\frmAgencia.aspx" />
     <Content Include="Views\frmEscala.aspx" />
     <Content Include="Views\frmError.aspx" />
     <Content Include="Views\frmEstadistica.aspx" />
     <Content Include="Views\frmSesion.aspx" />
     <Content Include="Views\frmHabitacion.aspx" />
     <Content Include="Views\frmHotel.aspx" />
+    <Content Include="Views\frmPasajero.aspx" />
     <Content Include="Views\frmReserva.aspx" />
     <Content Include="Views\frmReservaVuelo.aspx" />
     <Content Include="Views\frmAsiento.aspx" />
@@ -327,6 +329,13 @@
     <Compile Include="Views\frmAeropuerto.aspx.designer.cs">
       <DependentUpon>frmAeropuerto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAgencia.aspx.cs">
+      <DependentUpon>frmAgencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAgencia.aspx.designer.cs">
+      <DependentUpon>frmAgencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmEscala.aspx.cs">
       <DependentUpon>frmEscala.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -368,6 +377,13 @@
     </Compile>
     <Compile Include="Views\frmHotel.aspx.designer.cs">
       <DependentUpon>frmHotel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmPasajero.aspx.cs">
+      <DependentUpon>frmPasajero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmPasajero.aspx.designer.cs">
+      <DependentUpon>frmPasajero.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmReserva.aspx.cs">
       <DependentUpon>frmReserva.aspx</DependentUpon>

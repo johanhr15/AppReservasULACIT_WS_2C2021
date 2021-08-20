@@ -62,6 +62,8 @@
                     <li><a href="/Views/frmSesion.aspx">Sesion</a></li>
                     <li><a href="/Views/frmAsiento.aspx">Asientos</a></li>
                     <li><a href="/Views/frmAvion.aspx">Aviones</a></li>
+                    <li><a href="/Views/frmPasajero.aspx">Pasajero</a></li>
+                    <li><a href="/Views/frmAgencia.aspx">Agencia</a></li>
                 </ul>
               </li>
               <li>
