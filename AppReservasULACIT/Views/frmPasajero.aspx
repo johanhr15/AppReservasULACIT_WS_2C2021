@@ -115,7 +115,7 @@
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server" /></td>
-                            <td><asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtTelefono" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
 
                         </tr>
                     </table>

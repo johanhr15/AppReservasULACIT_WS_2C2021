@@ -89,7 +89,10 @@
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrNombreMant" Text="Nombre" runat="server"></asp:Literal></td>
-                             <td><asp:TextBox ID="txtNombreMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtNombreMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                             <td>
+                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
+                                     ErrorMessage="El nombre de la agencia es requerido" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCorreo" Text="Correo" runat="server"></asp:Literal></td>
@@ -97,7 +100,7 @@
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtTelefonoMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtTelefonoMant" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrSitioWeb" Text="Sitio web" runat="server"></asp:Literal></td>
