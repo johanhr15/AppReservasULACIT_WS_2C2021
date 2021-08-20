@@ -64,6 +64,8 @@
                     <li><a href="/Views/frmAvion.aspx">Aviones</a></li>
                     <li><a href="/Views/frmPasajero.aspx">Pasajero</a></li>
                     <li><a href="/Views/frmAgencia.aspx">Agencia</a></li>
+                    <li><a href="/Views/frmAerolinea.aspx">Aerolinea</a></li>
+                    <li><a href="/Views/frmVuelo.aspx">Vuelo</a></li>
                 </ul>
               </li>
               <li>

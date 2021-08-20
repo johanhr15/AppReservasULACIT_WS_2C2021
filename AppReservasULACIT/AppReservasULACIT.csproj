@@ -200,6 +200,8 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\frmAvion.aspx" />
+    <Content Include="Views\frmAerolinea.aspx" />
+    <Content Include="Views\frmVuelo.aspx" />
     <Content Include="Views\frmAeropuerto.aspx" />
     <Content Include="Views\frmAgencia.aspx" />
     <Content Include="Views\frmEscala.aspx" />
@@ -321,6 +323,20 @@
     </Compile>
     <Compile Include="Views\frmAvion.aspx.designer.cs">
       <DependentUpon>frmAvion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmAerolinea.aspx.cs">
+      <DependentUpon>frmAerolinea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAerolinea.aspx.designer.cs">
+      <DependentUpon>frmAerolinea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmVuelo.aspx.cs">
+      <DependentUpon>frmVuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmVuelo.aspx.designer.cs">
+      <DependentUpon>frmVuelo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmAeropuerto.aspx.cs">
       <DependentUpon>frmAeropuerto.aspx</DependentUpon>
