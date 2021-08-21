@@ -15,6 +15,9 @@ namespace AppReservasULACIT.Views
     {
         IEnumerable<Aerolinea> aerolineas = new ObservableCollection<Aerolinea>();
         AerolineaManager aerolineaManager = new AerolineaManager();
+        IEnumerable<Aeropuerto> aeropuertos = new ObservableCollection<Aeropuerto>();
+        AeropuertoManager aeropuertoManager = new AeropuertoManager();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,6 +45,20 @@ namespace AppReservasULACIT.Views
                 lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
                 lblStatus.Visible = true;
             }
+            try
+            {
+                aeropuertos = await aeropuertoManager.ObtenerAeropuertos(Session["Token"].ToString());
+                ddlSede.DataSource = aeropuertos.ToList();
+                ddlSede.DataBind();
+                ddlSede.DataTextField = "ARP_PAIS";
+                ddlSede.DataValueField = "ARP_PAIS";
+                ddlSede.DataBind();
+            }
+            catch (Exception exc)
+            {
+                lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
+                lblStatus.Visible = true;
+            }                                                 
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -52,7 +69,7 @@ namespace AppReservasULACIT.Views
                 resultado = await aerolineaManager.Eliminar(lblCodigoEliminar.Text, Session["Token"].ToString());
                 if (!string.IsNullOrEmpty(resultado))
                 {
-                    ltrModalMensaje.Text = "Aerolinea eliminado";
+                    ltrModalMensaje.Text = "Aerolinea eliminada";
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
                 }
@@ -80,44 +97,85 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Aerolinea aerolinea = new Aerolinea()
+                        try
                         {
-                            AER_NOMBRE = txtNombreMant.Text,
-                            AER_TELEFONO = txtTelefonoMant.Text,
-                            AER_CORREO = txtCorreoMant.Text,
-                            AER_SITIO_WEB = txtSitioWeb.Text,
-                            AER_SEDE = txtSede.Text
-                        };
+                            if (txtTelefonoMant.Text.Length == 8 && txtCorreoMant.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
+                            {
+                                Aerolinea aerolinea = new Aerolinea()
+                                {
+                                    AER_NOMBRE = txtNombreMant.Text,
+                                    AER_TELEFONO = txtTelefonoMant.Text,
+                                    AER_CORREO = txtCorreoMant.Text,
+                                    AER_SITIO_WEB = txtSitioWeb.Text,
+                                    AER_SEDE = ddlSede.SelectedValue
+                                };
 
-                        Aerolinea respuestaAerolinea = await aerolineaManager.Ingresar(aerolinea, Session["Token"].ToString());
+                                Aerolinea respuestaAerolinea = await aerolineaManager.Ingresar(aerolinea, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaAerolinea.AER_NOMBRE))
+                                if (!string.IsNullOrEmpty(respuestaAerolinea.AER_NOMBRE))
+                                {
+                                    lblResultado.Text = "Aerolinea ingresado con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
                         {
-                            lblResultado.Text = "Aerolinea ingresado con exito";
+                            lblResultado.Text = "La informacion ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
+
                     else//MODIFICAR
                     {
-                        Aerolinea aerolinea = new Aerolinea()
+                        try
                         {
-                            AER_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            AER_NOMBRE = txtNombreMant.Text,
-                            AER_TELEFONO = txtTelefonoMant.Text,
-                            AER_CORREO = txtCorreoMant.Text,
-                            AER_SITIO_WEB = txtSitioWeb.Text,
-                            AER_SEDE = txtSede.Text
-                        };
+                            if (txtTelefonoMant.Text.Length < 50 && txtTelefonoMant.Text.Length > 7 && txtCorreoMant.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
+                            {
+                                Aerolinea aerolinea = new Aerolinea()
+                                {
+                                    AER_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                                    AER_NOMBRE = txtNombreMant.Text,
+                                    AER_TELEFONO = txtTelefonoMant.Text,
+                                    AER_CORREO = txtCorreoMant.Text,
+                                    AER_SITIO_WEB = txtSitioWeb.Text,
+                                    AER_SEDE = ddlSede.SelectedValue
+                                };
 
-                        Aerolinea respuestaAerolinea = await aerolineaManager.Actualizar(aerolinea, Session["Token"].ToString());
+                                Aerolinea respuestaAerolinea = await aerolineaManager.Actualizar(aerolinea, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaAerolinea.AER_NOMBRE))
+                                if (!string.IsNullOrEmpty(respuestaAerolinea.AER_NOMBRE))
+                                {
+                                    lblResultado.Text = "Aerolinea modificada con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch (Exception exc)
                         {
-                            lblResultado.Text = "Aerolinea modificada con exito";
+                            lblResultado.Text = "La informacion ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
@@ -125,12 +183,12 @@ namespace AppReservasULACIT.Views
             }
             catch (Exception exc)
             {
-                lblStatus.Text = "Hubo un error en la operacion. Detalle: " + exc.Message;
+                lblStatus.Text = "Hubo un error en la operacion. Detalles: " + exc.Message;
                 lblStatus.Visible = true;
             }
         }
 
-        protected void btnCancelarMant_Click(object sender, EventArgs e)
+            protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
                "$(function() {CloseMantenimiento(); } );", true);
@@ -145,7 +203,6 @@ namespace AppReservasULACIT.Views
             txtTelefonoMant.Text = string.Empty;
             txtCorreoMant.Text = string.Empty;
             txtSitioWeb.Text = string.Empty;
-            txtSede.Text = string.Empty;
 
             LimpiarControles();
 
@@ -177,11 +234,14 @@ namespace AppReservasULACIT.Views
                     txtTelefonoMant.Text = fila.Cells[2].Text;
                     txtCorreoMant.Text = fila.Cells[3].Text;
                     txtSitioWeb.Text = fila.Cells[4].Text;
-                    txtSede.Text = fila.Cells[5].Text;
+                    ddlSede.SelectedValue = fila.Cells[5].Text;
+
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
                 case "Eliminar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     lblCodigoEliminar.Text = fila.Cells[0].Text;
                     lblCodigoEliminar.Visible = false;
                     ltrModalMensaje.Text = "Confirme que desea eliminar la aerolinea " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;

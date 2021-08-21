@@ -35,15 +35,15 @@
             CssClass="table table-striped" AlternatingRowStyle-BackColor="LightBlue" HeaderStyle-BackColor="Navy"
             HeaderStyle-ForeColor="White" Width="100%">
             <Columns>
-                 <asp:BoundField HeaderText="Codigo" DataField="VUE_CODIGO" />
-                 <asp:BoundField HeaderText="Aeropuerto Codigo" DataField="AER_CODIGO" />
-                 <asp:BoundField HeaderText="Codigo Origen" DataField="VUE_ORI_CODIGO"  />
-                 <asp:BoundField HeaderText="Codigo Destino" DataField="VUE_DES_CODIGO" />
-                 <asp:BoundField HeaderText="Terminal" DataField="VUE_TERMINAL" />
-                 <asp:BoundField HeaderText="Puerta" DataField="VUE_PUERTA" />
-                 <asp:BoundField HeaderText="Hora Partida" DataField="VUE_HORA_PARTIDA" />
-                 <asp:BoundField HeaderText="Hora Llegada" DataField="VUE_HORA_LLEGADA" />
-                 <asp:ButtonField HeaderText="Modificar" Text="Modificar" CommandName="Modificar"
+                 <asp:BoundField HeaderText= "Codigo" DataField="VUE_CODIGO" />
+                 <asp:BoundField HeaderText= "Aerolinea Codigo" DataField="AER_CODIGO" />
+                 <asp:BoundField HeaderText= "Codigo Origen" DataField="VUE_ORI_CODIGO"  />
+                 <asp:BoundField HeaderText= "Codigo Destino" DataField="VUE_DES_CODIGO" />
+                 <asp:BoundField HeaderText= "Terminal" DataField="VUE_TERMINAL" />
+                 <asp:BoundField HeaderText= "Puerta" DataField="VUE_PUERTA" />
+                 <asp:BoundField HeaderText= "Hora Partida" DataField="VUE_HORA_PARTIDA" />
+                 <asp:BoundField HeaderText= "Hora Llegada" DataField="VUE_HORA_LLEGADA" />
+                 <asp:ButtonField HeaderText= "Modificar" Text="Modificar" CommandName="Modificar"
                      ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-primary" />
                 <asp:ButtonField HeaderText="Eliminar" Text="Eliminar" CommandName="Eliminar" 
                      ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-danger" />
@@ -52,6 +52,7 @@
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
         <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+        <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
     </div>
 
      <!--VENTANA MODAL -->
@@ -90,38 +91,57 @@
                             <td><asp:TextBox ID="txtCodigoMant" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrAerCodigoMant" Text="Codigo Aeropuerto" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtAerCodigoMant" runat="server" CssClass="form-control"></asp:TextBox></td>
-                             <td>
-                                 <asp:RequiredFieldValidator ID="rfvAerCodigo" runat="server"
-                                     ErrorMessage="El codigo del aeropuerto es requerido" ControlToValidate="txtAerCodigoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                             <td><asp:Literal ID="ltrAerCodigoMant" Text="Codigo Aerolinea" runat="server"></asp:Literal></td>
+                            <td><asp:DropDownList ID="ddlCodigoAerolinea" CssClass="form-control" runat="server"> 
+                            </asp:DropDownList></td>
+                            </tr>
+                        <tr>
+                             <td><asp:Literal ID="ltrOriCodigo" Text="Pais Origen" runat="server"></asp:Literal></td>
+                             <td><asp:DropDownList ID="ddlCodigoAeropuerto" CssClass="form-control" runat="server"> 
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrOriCodigo" Text="Codigo de Origen" runat="server"></asp:Literal></td>
-                             <td><asp:TextBox ID="txtOriCodigoMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                             <td><asp:Literal ID="ltrDesCodigo" Text="Codigo de Destino" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtDesCodigoMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                             <td><asp:Literal ID="ltrDesCodigo" Text="Pais Destino" runat="server"></asp:Literal></td>
+                            <td><asp:DropDownList ID="ddlCodigoAeropuerto2" CssClass="form-control" runat="server"> 
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTerminal" Text="Terminal" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtTerminal" runat="server" CssClass="form-control"></asp:TextBox></td>
+                             <td><asp:DropDownList ID="ddlTerminal" CssClass="form-control" runat="server">
+                                <asp:ListItem Selected="True" Value="A100">A100</asp:ListItem>
+                                <asp:ListItem Value="A110">A110</asp:ListItem>
+                                <asp:ListItem Value="A120">A120</asp:ListItem>
+                                <asp:ListItem Value="A130">A130</asp:ListItem>
+                                <asp:ListItem Value="A200">A200</asp:ListItem>
+                                <asp:ListItem Value="A210">A210</asp:ListItem>
+                                <asp:ListItem Value="A220">A220</asp:ListItem>
+                                <asp:ListItem Value="A230">A230</asp:ListItem>
+                                <asp:ListItem Value="A300">A300</asp:ListItem>
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrPuerta" Text="Puerta" runat="server" /></td>
-                            <td><asp:TextBox ID="txtPuerta" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:DropDownList ID="ddlPuerta" CssClass="form-control" runat="server">
+                                <asp:ListItem Selected="True" Value="P10">P10</asp:ListItem>
+                                <asp:ListItem Value="P11">P11</asp:ListItem>
+                                <asp:ListItem Value="P12">P12</asp:ListItem>
+                                <asp:ListItem Value="P13">P13</asp:ListItem>
+                                <asp:ListItem Value="P20">P20</asp:ListItem>
+                                <asp:ListItem Value="P21">P21</asp:ListItem>
+                                <asp:ListItem Value="P22">P22</asp:ListItem>
+                                <asp:ListItem Value="P23">P23</asp:ListItem>
+                                <asp:ListItem Value="P30">P30</asp:ListItem>
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrVueHoraPartida" Text="Hora de partida" runat="server" /></td>
-                            <td><asp:TextBox ID="txtVueHoraPartida" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox TextMode="DateTimeLocal" ID="txtVueHoraPartida" runat="server" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrVueHoraLlegada" Text="Hora de llegada" runat="server" /></td>
-                            <td><asp:TextBox ID="txtVueHoraLlegada" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox TextMode="DateTimeLocal" ID="txtVueHoraLlegada" runat="server" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"

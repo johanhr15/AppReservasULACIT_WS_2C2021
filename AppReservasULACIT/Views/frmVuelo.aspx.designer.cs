@@ -42,6 +42,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
+        /// lblResultado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado;
+
+        /// <summary>
         /// ltrModalMensaje control.
         /// </summary>
         /// <remarks>
@@ -114,22 +123,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrAerCodigoMant;
 
         /// <summary>
-        /// txtAerCodigoMant control.
+        /// ddlCodigoAerolinea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAerCodigoMant;
-
-        /// <summary>
-        /// rfvAerCodigo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAerCodigo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCodigoAerolinea;
 
         /// <summary>
         /// ltrOriCodigo control.
@@ -141,13 +141,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrOriCodigo;
 
         /// <summary>
-        /// txtOriCodigoMant control.
+        /// ddlCodigoAeropuerto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOriCodigoMant;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCodigoAeropuerto;
 
         /// <summary>
         /// ltrDesCodigo control.
@@ -159,13 +159,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrDesCodigo;
 
         /// <summary>
-        /// txtDesCodigoMant control.
+        /// ddlCodigoAeropuerto2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDesCodigoMant;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCodigoAeropuerto2;
 
         /// <summary>
         /// ltrTerminal control.
@@ -177,13 +177,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrTerminal;
 
         /// <summary>
-        /// txtTerminal control.
+        /// ddlTerminal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTerminal;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTerminal;
 
         /// <summary>
         /// ltrPuerta control.
@@ -195,13 +195,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrPuerta;
 
         /// <summary>
-        /// txtPuerta control.
+        /// ddlPuerta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPuerta;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPuerta;
 
         /// <summary>
         /// ltrVueHoraPartida control.
@@ -238,15 +238,6 @@ namespace AppReservasULACIT.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtVueHoraLlegada;
-
-        /// <summary>
-        /// lblResultado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado;
 
         /// <summary>
         /// btnAceptarMant control.

@@ -120,7 +120,6 @@ namespace AppReservasULACIT.Views
                         {
                             if (Convert.ToDateTime(txtFecha.Text) >= DateTime.Now)
                             {
-                                txtFecha.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
                                 ReservaVuelo reservaVuelo = new ReservaVuelo()
                                 {
                                     USU_CODIGO = Convert.ToInt32(ddlCodigoUsuario.SelectedValue),
@@ -162,7 +161,6 @@ namespace AppReservasULACIT.Views
                         {
                             if (Convert.ToDateTime(txtFecha.Text) >= DateTime.Now && !string.IsNullOrEmpty(txtFecha.Text))
                             {
-                                txtFecha.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
                                 ReservaVuelo reservaVuelo = new ReservaVuelo()
                                 {
                                     RVU_CODIGO = Convert.ToInt32(txtCodigoMant.Text),

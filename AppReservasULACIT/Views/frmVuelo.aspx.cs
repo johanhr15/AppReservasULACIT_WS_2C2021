@@ -15,6 +15,11 @@ namespace AppReservasULACIT.Views
     {
         IEnumerable<Vuelo> vuelos = new ObservableCollection<Vuelo>();
         VueloManager vueloManager = new VueloManager();
+        IEnumerable<Aerolinea> aerolineas = new ObservableCollection<Aerolinea>();
+        AerolineaManager aerolineaManager = new AerolineaManager();
+        IEnumerable<Aeropuerto> aeropuertos = new ObservableCollection<Aeropuerto>();
+        AeropuertoManager aeropuertoManager = new AeropuertoManager();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,6 +47,41 @@ namespace AppReservasULACIT.Views
                 lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
                 lblStatus.Visible = true;
             }
+            try
+            {
+                aerolineas = await aerolineaManager.ObtenerAerolineas(Session["Token"].ToString());
+                ddlCodigoAerolinea.DataSource = aerolineas.ToList();
+                ddlCodigoAerolinea.DataBind();
+                ddlCodigoAerolinea.DataTextField = "AER_NOMBRE";
+                ddlCodigoAerolinea.DataValueField = "AER_CODIGO";
+                ddlCodigoAerolinea.DataBind();
+            }
+            catch (Exception exc)
+            {
+
+                lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
+                lblStatus.Visible = true;
+            }
+            try
+            {
+                aeropuertos = await aeropuertoManager.ObtenerAeropuertos(Session["Token"].ToString());
+                ddlCodigoAeropuerto.DataSource = aeropuertos.ToList();
+                ddlCodigoAeropuerto.DataBind();
+                ddlCodigoAeropuerto.DataTextField = "ARP_PAIS";
+                ddlCodigoAeropuerto.DataValueField = "ARP_CODIGO";
+                ddlCodigoAeropuerto.DataBind();
+                ddlCodigoAeropuerto2.DataSource = aeropuertos.ToList();
+                ddlCodigoAeropuerto2.DataBind();
+                ddlCodigoAeropuerto2.DataTextField = "ARP_PAIS";
+                ddlCodigoAeropuerto2.DataValueField = "ARP_CODIGO";
+                ddlCodigoAeropuerto2.DataBind();
+            }
+            catch (Exception exc)
+            {
+
+                lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
+                lblStatus.Visible = true;
+            }
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -60,6 +100,7 @@ namespace AppReservasULACIT.Views
             catch (Exception exc)
             {
                 lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
+                lblStatus.Visible = true;
                 lblStatus.Visible = true;
             }
         }
@@ -80,48 +121,90 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Vuelo vuelo = new Vuelo()
-                        {
-                            AER_CODIGO = Convert.ToInt32(txtAerCodigoMant.Text),
-                            VUE_ORI_CODIGO = Convert.ToInt32(txtOriCodigoMant.Text),
-                            VUE_DES_CODIGO = Convert.ToInt32(txtDesCodigoMant.Text),
-                            VUE_TERMINAL = txtTerminal.Text,
-                            VUE_PUERTA = txtPuerta.Text,
-                            VUE_HORA_PARTIDA = Convert.ToDateTime(txtVueHoraPartida.Text),
-                            VUE_HORA_LLEGADA = Convert.ToDateTime(txtVueHoraLlegada.Text)
-                        };
+                        try
+                        { 
+                            if (Convert.ToDateTime(txtVueHoraPartida.Text) >= DateTime.Now && Convert.ToDateTime(txtVueHoraPartida.Text) < Convert.ToDateTime(txtVueHoraLlegada.Text))
+                            {
+                                Vuelo vuelo = new Vuelo()
+                                {
+                                    AER_CODIGO = Convert.ToInt32(ddlCodigoAerolinea.SelectedValue),
+                                    VUE_ORI_CODIGO = Convert.ToInt32(ddlCodigoAeropuerto.SelectedValue),
+                                    VUE_DES_CODIGO = Convert.ToInt32(ddlCodigoAeropuerto2.SelectedValue),
+                                    VUE_TERMINAL = ddlTerminal.SelectedValue,
+                                    VUE_PUERTA = ddlPuerta.SelectedValue,
+                                    VUE_HORA_PARTIDA = Convert.ToDateTime(txtVueHoraPartida.Text),
+                                    VUE_HORA_LLEGADA = Convert.ToDateTime(txtVueHoraLlegada.Text)
+                                };
 
-                        Vuelo respuestaVuelo = await vueloManager.Ingresar(vuelo, Session["Token"].ToString());
+                                Vuelo respuestaVuelo = await vueloManager.Ingresar(vuelo, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaVuelo.VUE_TERMINAL))
+                                if (!string.IsNullOrEmpty(respuestaVuelo.VUE_TERMINAL))
+                                {
+                                    lblResultado.Text = "Vuelo ingresado con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
                         {
-                            lblResultado.Text = "Vuelo ingresado con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
                     else//MODIFICAR
                     {
-                        Vuelo vuelo = new Vuelo()
+                        try
                         {
-                            VUE_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            AER_CODIGO = Convert.ToInt32(txtAerCodigoMant.Text),
-                            VUE_ORI_CODIGO = Convert.ToInt32(txtOriCodigoMant.Text),
-                            VUE_DES_CODIGO = Convert.ToInt32(txtDesCodigoMant.Text),
-                            VUE_TERMINAL = txtTerminal.Text,
-                            VUE_PUERTA = txtPuerta.Text,
-                            VUE_HORA_PARTIDA = Convert.ToDateTime(txtVueHoraPartida.Text),
-                            VUE_HORA_LLEGADA = Convert.ToDateTime(txtVueHoraLlegada.Text)
-                        };
+                            if (Convert.ToDateTime(txtVueHoraPartida.Text) >= DateTime.Now && Convert.ToDateTime(txtVueHoraPartida.Text) < Convert.ToDateTime(txtVueHoraLlegada.Text) && !string.IsNullOrEmpty(txtVueHoraPartida.Text) && !string.IsNullOrEmpty(txtVueHoraLlegada.Text))
+                            {
+                                Vuelo vuelo = new Vuelo()
+                                {
+                                    VUE_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                                    AER_CODIGO = Convert.ToInt32(ddlCodigoAerolinea.SelectedValue),
+                                    VUE_ORI_CODIGO = Convert.ToInt32(ddlCodigoAeropuerto.SelectedValue),
+                                    VUE_DES_CODIGO = Convert.ToInt32(ddlCodigoAeropuerto2.SelectedValue),
+                                    VUE_TERMINAL = ddlTerminal.SelectedValue,
+                                    VUE_PUERTA = ddlPuerta.SelectedValue,
+                                    VUE_HORA_PARTIDA = Convert.ToDateTime(txtVueHoraPartida.Text),
+                                    VUE_HORA_LLEGADA = Convert.ToDateTime(txtVueHoraLlegada.Text)
+                                };
 
-                        Vuelo respuestaVuelo = await vueloManager.Actualizar(vuelo, Session["Token"].ToString());
+                                Vuelo respuestaVuelo = await vueloManager.Actualizar(vuelo, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaVuelo.VUE_TERMINAL))
+                                if (!string.IsNullOrEmpty(respuestaVuelo.VUE_TERMINAL))
+                                {
+                                    lblResultado.Text = "Vuelo modificado con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+
+                            }
+                        }
+
+                        catch (Exception exc)
                         {
-                            lblResultado.Text = "Vuelo modificado con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
@@ -129,7 +212,7 @@ namespace AppReservasULACIT.Views
             }
             catch (Exception exc)
             {
-                lblStatus.Text = "Hubo un error en la operacion. Detalle: " + exc.Message;
+                lblStatus.Text = "Hubo un error en la operacion. Detalles: " + exc.Message;
                 lblStatus.Visible = true;
             }
         }
@@ -145,13 +228,7 @@ namespace AppReservasULACIT.Views
             ltrTituloMantenimiento.Text = "Nuevo Vuelo";
             lblResultado.Text = string.Empty;
             txtCodigoMant.Text = string.Empty;
-            txtAerCodigoMant.Text = string.Empty;
-            txtOriCodigoMant.Text = string.Empty;
-            txtDesCodigoMant.Text = string.Empty;
-            txtTerminal.Text = string.Empty;
-            txtPuerta.Text = string.Empty;
-            txtVueHoraPartida.Text = string.Empty;
-            txtVueHoraLlegada.Text = string.Empty;
+
             LimpiarControles();
 
             ScriptManager.RegisterStartupScript(this,
@@ -178,17 +255,20 @@ namespace AppReservasULACIT.Views
                 case "Modificar":
                     ltrTituloMantenimiento.Text = "Modificar vuelo";
                     txtCodigoMant.Text = fila.Cells[0].Text;
-                    txtAerCodigoMant.Text = fila.Cells[1].Text;
-                    txtOriCodigoMant.Text = fila.Cells[2].Text;
-                    txtDesCodigoMant.Text = fila.Cells[3].Text;
-                    txtTerminal.Text = fila.Cells[4].Text;
-                    txtPuerta.Text = fila.Cells[5].Text;
-                    txtVueHoraPartida.Text = fila.Cells[5].Text;
-                    txtVueHoraLlegada.Text = fila.Cells[5].Text;
+                    ddlCodigoAerolinea.SelectedValue = fila.Cells[1].Text;
+                    ddlCodigoAeropuerto.SelectedValue = fila.Cells[2].Text;
+                    ddlCodigoAeropuerto2.SelectedValue = fila.Cells[3].Text;
+                    ddlTerminal.SelectedValue = fila.Cells[4].Text;
+                    ddlPuerta.SelectedValue = fila.Cells[5].Text;
+                    txtVueHoraPartida.Text = fila.Cells[6].Text;
+                    txtVueHoraLlegada.Text = fila.Cells[7].Text;
+
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
                 case "Eliminar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     lblCodigoEliminar.Text = fila.Cells[0].Text;
                     lblCodigoEliminar.Visible = false;
                     ltrModalMensaje.Text = "Confirme que desea eliminar el vuelo " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;

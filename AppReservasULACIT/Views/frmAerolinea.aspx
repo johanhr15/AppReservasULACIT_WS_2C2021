@@ -50,6 +50,7 @@
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
         <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+        <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
     </div>
 
      <!--VENTANA MODAL -->
@@ -58,7 +59,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Mantenimiento de aerolineas</h4>
+                    <h4 class="modal-title">Mantenimiento de Aerolineas</h4>
                 </div>
                 <div class="modal-body">
                     <p><asp:Literal id="ltrModalMensaje" runat="server" /><asp:Label ID="lblCodigoEliminar" runat="server" /></p>
@@ -96,23 +97,34 @@
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server"></asp:Literal></td>
-                             <td><asp:TextBox ID="txtTelefonoMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                             <td><asp:TextBox ID="txtTelefonoMant" TextMode="Number" runat="server"  CssClass="form-control"></asp:TextBox></td>
+
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                     ErrorMessage="El telefono es requerido" ControlToValidate="txtTelefonoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCorreo" Text="Correo" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtCorreoMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                     ErrorMessage="El correo es requerido" ControlToValidate="txtCorreoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrSitioWeb" Text="Sitio Web" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtSitioWeb" runat="server" CssClass="form-control"></asp:TextBox></td>
+
+                             <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                     ErrorMessage="El sitio web es requerido" ControlToValidate="txtSitioWeb" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrSede" Text="Sede" runat="server" /></td>
-                            <td><asp:TextBox ID="txtSede" runat="server" CssClass="form-control"></asp:TextBox></td>
-
+                            <td><asp:DropDownList ID="ddlSede" CssClass="form-control" runat="server"> 
+                            </asp:DropDownList></td>
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"

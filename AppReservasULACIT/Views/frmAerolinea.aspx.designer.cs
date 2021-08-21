@@ -42,6 +42,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
+        /// lblResultado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado;
+
+        /// <summary>
         /// ltrModalMensaje control.
         /// </summary>
         /// <remarks>
@@ -150,6 +159,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoMant;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// ltrCorreo control.
         /// </summary>
         /// <remarks>
@@ -166,6 +184,15 @@ namespace AppReservasULACIT.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCorreoMant;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// ltrSitioWeb control.
@@ -186,6 +213,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtSitioWeb;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// ltrSede control.
         /// </summary>
         /// <remarks>
@@ -195,22 +231,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrSede;
 
         /// <summary>
-        /// txtSede control.
+        /// ddlSede control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSede;
-
-        /// <summary>
-        /// lblResultado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSede;
 
         /// <summary>
         /// btnAceptarMant control.

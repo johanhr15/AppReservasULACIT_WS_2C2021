@@ -28,6 +28,7 @@
             });
         });
     </script> 
+
     <H1>Mantenimiento de Reserva de Vuelos</H1>
     <div class="container">
          <input id="myInput" Placeholder="Buscar" class="form-control" type="text" />
