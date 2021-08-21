@@ -77,7 +77,11 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Pasajero pasajero = new Pasajero()
+                        try
+                        {
+                            if (txtTelefono.Text.Length < 50 && txtTelefono.Text.Length > 7 && txtCorreo.Text.Contains("@"))
+                            {
+                                Pasajero pasajero = new Pasajero()
                         {
                             PAS_PASAPORTE = txtPasaporteMant.Text,
                             PAS_NOMBRE = txtNombreMant.Text,
@@ -97,9 +101,29 @@ namespace AppReservasULACIT.Views
                             InicializarControles();
                         }
                     }
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
+                        {
+                            lblResultado.Text = "La informacion ingresada No es Valida";
+                            lblResultado.Visible = true;
+                            lblResultado.ForeColor = Color.Red;
+                            InicializarControles();
+                        }
+                    }
                     else//MODIFICAR
                     {
-                        Pasajero pasajero = new Pasajero()
+                        try
+                        {
+                            if (txtTelefono.Text.Length < 50 && txtTelefono.Text.Length > 7 && txtCorreo.Text.Contains("@"))
+                            {
+                                Pasajero pasajero = new Pasajero()
                         {
                             PAS_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
                             PAS_PASAPORTE = txtPasaporteMant.Text,
@@ -118,6 +142,22 @@ namespace AppReservasULACIT.Views
                             lblResultado.Text = "Pasaporte modificado con exito";
                             lblResultado.Visible = true;
                             lblResultado.ForeColor = Color.Green;
+                            InicializarControles();
+                        }
+                    }
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch (Exception exc)
+                        {
+                            lblResultado.Text = "La informacion ingresada No es Valida";
+                            lblResultado.Visible = true;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
@@ -171,6 +211,8 @@ namespace AppReservasULACIT.Views
             switch (e.CommandName)
             {
                 case "Modificar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     ltrTituloMantenimiento.Text = "Modificar pasajero";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     txtPasaporteMant.Text = fila.Cells[1].Text;
@@ -183,6 +225,8 @@ namespace AppReservasULACIT.Views
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
                 case "Eliminar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     lblCodigoEliminar.Text = fila.Cells[0].Text;
                     lblCodigoEliminar.Visible = false;
                     ltrModalMensaje.Text = "Confirme que desea eliminar el pasajero " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;

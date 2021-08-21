@@ -99,7 +99,7 @@ namespace AppReservasULACIT.Views
                     {
                         try
                         {
-                            if (txtTelefonoMant.Text.Length == 8 && txtCorreoMant.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
+                            if (txtTelefonoMant.Text.Length < 50 && txtTelefonoMant.Text.Length > 7 && txtCorreoMant.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
                             {
                                 Aerolinea aerolinea = new Aerolinea()
                                 {
@@ -228,6 +228,8 @@ namespace AppReservasULACIT.Views
             switch (e.CommandName)
             {
                 case "Modificar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     ltrTituloMantenimiento.Text = "Modificar aerolinea";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     txtNombreMant.Text = fila.Cells[1].Text;

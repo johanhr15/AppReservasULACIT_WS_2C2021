@@ -51,7 +51,8 @@
         </asp:GridView>
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
-        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+         <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+         <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />    
     </div>
 
  <!--VENTANA MODAL -->
@@ -94,32 +95,49 @@
                             <td><asp:TextBox ID="txtPasaporteMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                              <td>
                                  <asp:RequiredFieldValidator ID="rfvPasaporte" runat="server"
-                                     ErrorMessage="El número del pasaporte es requerido" ControlToValidate="txtPasaporteMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtPasaporteMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrNombre" Text="Nombre" runat="server"></asp:Literal></td>
                              <td><asp:TextBox ID="txtNombreMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+
+
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrFechaNacimiento" Text="Fecha de nacimiento" runat="server" /></td>
-                            <td><asp:TextBox TextMode="DateTimeLocal" ID="txtFecha" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td><asp:TextBox TextMode="Date" ID="txtFecha" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtFecha" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrNacionalidad" Text="Nacionalidad" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtNacionalidad" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtNacionalidad" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrCorreo" Text="Correo" runat="server" /></td>
                             <td><asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtCorreo" EnableClientScript="False"></asp:RequiredFieldValidator></td>
 
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server" /></td>
                             <td><asp:TextBox ID="txtTelefono" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtTelefono" EnableClientScript="False"></asp:RequiredFieldValidator></td>
 
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
+                   
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"
