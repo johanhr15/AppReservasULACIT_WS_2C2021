@@ -2,14 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <script type="text/javascript">
-        
-       function openModal() {
-                 $('#myModal').modal('show'); //ventana de mensajes
+
+        function openModal() {
+            $('#myModal').modal('show'); //ventana de mensajes
         }
 
         function openModalMantenimiento() {
             $('#myModalMantenimiento').modal('show'); //ventana de mantenimiento
-        }    
+        }
 
         function CloseModal() {
             $('#myModal').modal('hide');//cierra ventana de mensajes

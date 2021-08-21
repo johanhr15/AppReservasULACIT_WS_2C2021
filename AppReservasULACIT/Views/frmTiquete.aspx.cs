@@ -13,7 +13,7 @@ namespace AppReservasULACIT.Views
 {
     public partial class frmTiquete : System.Web.UI.Page
     {
-       
+
 
         IEnumerable<Tiquete> tiquetes = new ObservableCollection<Tiquete>();
         TiqueteManager tiqueteManager = new TiqueteManager();
@@ -167,7 +167,7 @@ namespace AppReservasULACIT.Views
                     {
                         Tiquete tiquete = new Tiquete()
                         {
-                            
+                            AER_CODIGO = Convert.ToInt32(ddlCodigoAerolinea.SelectedValue),
                             ESC_CODIGO = Convert.ToInt32(ddlCodigoEscala.SelectedValue),
                             PAS_CODIGO = Convert.ToInt32(ddlCodigoPasajero.SelectedValue),
                             VUE_CODIGO = Convert.ToInt32(ddlCodigoVuelo.SelectedValue),
@@ -213,7 +213,7 @@ namespace AppReservasULACIT.Views
                             lblResultado.Visible = true;
                             lblResultado.ForeColor = Color.Green;
                             InicializarControles();
-                        }    
+                        }
                     }
                 }
             }
