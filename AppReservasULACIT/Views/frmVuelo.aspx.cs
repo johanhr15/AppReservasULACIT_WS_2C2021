@@ -253,6 +253,8 @@ namespace AppReservasULACIT.Views
             switch (e.CommandName)
             {
                 case "Modificar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     ltrTituloMantenimiento.Text = "Modificar vuelo";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     ddlCodigoAerolinea.SelectedValue = fila.Cells[1].Text;

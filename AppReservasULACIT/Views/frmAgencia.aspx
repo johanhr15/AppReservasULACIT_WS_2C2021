@@ -49,7 +49,8 @@
         </asp:GridView>
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
-        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" /> 
+        <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />  
     </div>
 
      <!--VENTANA MODAL -->
@@ -87,32 +88,30 @@
                             <td><asp:Literal ID="ltrCodigoMant" Text="Codigo" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtCodigoMant" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
                         </tr>
-                        <tr>
-                             <td><asp:Literal ID="ltrNombreMant" Text="Nombre" runat="server"></asp:Literal></td>
-                            <td><asp:TextBox ID="txtNombreMant" runat="server" CssClass="form-control"></asp:TextBox></td>
-                             <td>
-                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                                     ErrorMessage="El nombre de la agencia es requerido" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
-                        </tr>
+                        <tr>                             <td><asp:Literal ID="ltrNombreMant" Text="Nombre" runat="server"></asp:Literal></td>                            <td><asp:TextBox ID="txtNombreMant" runat="server" CssClass="form-control"></asp:TextBox></td>                             <td>                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server"                                     ErrorMessage="*Espacio obligatorio*" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>                        </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCorreo" Text="Correo" runat="server"></asp:Literal></td>
                              <td><asp:TextBox ID="txtCorreo" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                            <td>                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"                                     ErrorMessage="*Espacio obligatorio*" ControlToValidate="txtCorreo" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtTelefonoMant" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"                                     ErrorMessage="*Espacio obligatorio*" ControlToValidate="txtTelefonoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrSitioWeb" Text="Sitio web" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtSitioWeb" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"                                     ErrorMessage="*Espacio obligatorio*" ControlToValidate="txtSitioWeb" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrHorario" Text="Horario" runat="server" /></td>
                             <td><asp:TextBox ID="txtHorario" runat="server" CssClass="form-control"></asp:TextBox></td>
+                            <td>                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"                                     ErrorMessage="*Espacio obligatorio*" ControlToValidate="txtHorario" EnableClientScript="False"></asp:RequiredFieldValidator></td>
 
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
+                    
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"

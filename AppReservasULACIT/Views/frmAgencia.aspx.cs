@@ -77,7 +77,11 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Agencia agencia = new Agencia()
+                        try
+                        {
+                            if (txtTelefonoMant.Text.Length < 50 && txtTelefonoMant.Text.Length > 7 && txtCorreo.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
+                            {
+                                Agencia agencia = new Agencia()
                         {
                             AGE_NOMBRE = txtNombreMant.Text,
                             AGE_CORREO = txtCorreo.Text,
@@ -96,9 +100,30 @@ namespace AppReservasULACIT.Views
                             InicializarControles();
                         }
                     }
+
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
+                        {
+                            lblResultado.Text = "La informacion ingresada No es Valida";
+                            lblResultado.Visible = true;
+                            lblResultado.ForeColor = Color.Red;
+                            InicializarControles();
+                        }
+                    }
                     else//MODIFICAR
                     {
-                        Agencia agencia = new Agencia()
+                        try
+                        {
+                            if (txtTelefonoMant.Text.Length < 50 && txtTelefonoMant.Text.Length > 7 && txtCorreo.Text.Contains("@") && txtSitioWeb.Text.Contains(".com"))
+                            {
+                                Agencia agencia = new Agencia()
                         {
                             AGE_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
                             AGE_NOMBRE = txtNombreMant.Text,
@@ -118,8 +143,25 @@ namespace AppReservasULACIT.Views
                             InicializarControles();
                         }
                     }
+                            else
+                            {
+                                lblResultado.Text = "La informacion ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch (Exception exc)
+                        {
+                            lblResultado.Text = "La informacion ingresada No es Valida";
+                            lblResultado.Visible = true;
+                            lblResultado.ForeColor = Color.Red;
+                            InicializarControles();
+                        }
+                    }
                 }
             }
+
             catch (Exception exc)
             {
                 lblStatus.Text = "Hubo un error en la operacion. Detalle: " + exc.Message;
@@ -168,6 +210,8 @@ namespace AppReservasULACIT.Views
             switch (e.CommandName)
             {
                 case "Modificar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     ltrTituloMantenimiento.Text = "Modificar agencia";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     txtNombreMant.Text = fila.Cells[1].Text;
@@ -179,6 +223,8 @@ namespace AppReservasULACIT.Views
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
                 case "Eliminar":
+                    lblResultado.Text = "";
+                    lblResultado.Visible = false;
                     lblCodigoEliminar.Text = fila.Cells[0].Text;
                     lblCodigoEliminar.Visible = false;
                     ltrModalMensaje.Text = "Confirme que desea eliminar la agencia " + fila.Cells[0].Text + "-" + fila.Cells[1].Text;

@@ -93,7 +93,7 @@
                             <td><asp:TextBox ID="txtNombreMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                              <td>
                                  <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                                     ErrorMessage="El nombre de la aerolinea es requerido" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtNombreMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTelefono" Text="Telefono" runat="server"></asp:Literal></td>
@@ -101,7 +101,7 @@
 
                             <td>
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                     ErrorMessage="El telefono es requerido" ControlToValidate="txtTelefonoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtTelefonoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCorreo" Text="Correo" runat="server"></asp:Literal></td>
@@ -109,7 +109,7 @@
                             
                             <td>
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                     ErrorMessage="El correo es requerido" ControlToValidate="txtCorreoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtCorreoMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrSitioWeb" Text="Sitio Web" runat="server"></asp:Literal></td>
@@ -117,7 +117,7 @@
 
                              <td>
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                                     ErrorMessage="El sitio web es requerido" ControlToValidate="txtSitioWeb" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtSitioWeb" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrSede" Text="Sede" runat="server" /></td>
