@@ -93,21 +93,21 @@
                             <td><asp:TextBox ID="txtPaisMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                              <td>
                              <asp:RequiredFieldValidator ID="rfvPais" runat="server"
-                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtPaisMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                              ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtPaisMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCiudad" Text="Ciudad" runat="server"></asp:Literal></td>
                              <td><asp:TextBox ID="txtCiudadMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
                             <td>         
                             <asp:RequiredFieldValidator ID="rfvCuidad" runat="server"
-                             ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtCiudadMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                             ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtCiudadMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrZonaHoraria" Text="Zona Horaria" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtZonaHorariaMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                          <td>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtZonaHorariaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                              ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtZonaHorariaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrVisa" Text="Visa" runat="server"></asp:Literal></td>

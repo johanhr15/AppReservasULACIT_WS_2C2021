@@ -93,7 +93,7 @@
                             <td><asp:TextBox TextMode="Number" ID="txtNumeroTerminalMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                               <td>
                              <asp:RequiredFieldValidator ID="rfvNumeroTerminal" runat="server"
-                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                              ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCodigoAero" Text="Codigo Aeropuerto" runat="server"></asp:Literal></td>
@@ -105,14 +105,14 @@
                             <td><asp:TextBox TextMode="DateTimeLocal" ID="txtTiempoEsperaMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                        <td>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtTiempoEsperaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                              ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtTiempoEsperaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                             </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTrasbordo" Text="Trasbordo" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtTrasbordo" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                  <asp:RequiredFieldValidator ID="rfvTrasbordo" runat="server"
-                                     ErrorMessage=" *Espacio Obligatorio" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                     </table>
                 </div>

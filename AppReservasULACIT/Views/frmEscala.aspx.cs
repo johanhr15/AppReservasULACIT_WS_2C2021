@@ -97,43 +97,83 @@ namespace AppReservasULACIT.Views
                 {
                     if (string.IsNullOrEmpty(txtCodigoMant.Text))//INSERTAR
                     {
-                        Escala escala = new Escala()
+                        try
                         {
-                            ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
-                            ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
-                            ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
-                            ESC_TRASBORDO = txtTrasbordo.Text
+                            if (Convert.ToDateTime(txtTiempoEsperaMant.Text) >= DateTime.Now)
+                            {
+                                Escala escala = new Escala()
+                                {
+                                    ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
+                                    ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
+                                    ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
+                                    ESC_TRASBORDO = txtTrasbordo.Text
                             
-                        };
+                                };
 
-                        Escala respuestaEscala = await escalaManager.Ingresar(escala, Session["Token"].ToString());
+                                Escala respuestaEscala = await escalaManager.Ingresar(escala, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaEscala.ESC_TRASBORDO))
+                                if (!string.IsNullOrEmpty(respuestaEscala.ESC_TRASBORDO))
+                                {
+                                    lblResultado.Text = "Escala ingresada con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
                         {
-                            lblResultado.Text = "Escala ingresada con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }
                     else//MODIFICAR
                     {
-                        Escala escala = new Escala()
+                        try
                         {
-                            ESC_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
-                            ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
-                            ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
-                            ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
-                            ESC_TRASBORDO = txtTrasbordo.Text
-                        };
+                            if (Convert.ToDateTime(txtTiempoEsperaMant.Text) >= DateTime.Now && !string.IsNullOrEmpty(txtTiempoEsperaMant.Text))
+                            {
+                                        Escala escala = new Escala()
+                                {
+                                    ESC_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
+                                    ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
+                                    ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
+                                    ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
+                                    ESC_TRASBORDO = txtTrasbordo.Text
+                                };
 
-                        Escala respuestaEscala = await escalaManager.Actualizar(escala, Session["Token"].ToString());
+                                Escala respuestaEscala = await escalaManager.Actualizar(escala, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(respuestaEscala.ESC_TRASBORDO))
+                                if (!string.IsNullOrEmpty(respuestaEscala.ESC_TRASBORDO))
+                                {
+                                    lblResultado.Text = "Escala modificada con exito";
+                                    lblResultado.Visible = true;
+                                    lblResultado.ForeColor = Color.Green;
+                                    InicializarControles();
+                                }
+                            }
+                            else
+                            {
+                                lblResultado.Text = "La Fecha Ingresada No es Valida";
+                                lblResultado.Visible = true;
+                                lblResultado.ForeColor = Color.Red;
+                                InicializarControles();
+                            }
+                        }
+                        catch
                         {
-                            lblResultado.Text = "Escala modificada con exito";
+                            lblResultado.Text = "La Fecha Ingresada No es Valida";
                             lblResultado.Visible = true;
-                            lblResultado.ForeColor = Color.Green;
+                            lblResultado.ForeColor = Color.Red;
                             InicializarControles();
                         }
                     }

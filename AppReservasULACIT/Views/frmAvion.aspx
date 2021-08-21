@@ -121,7 +121,7 @@
                         
                         <tr>
                             <td><asp:Literal ID="ltrCapacidad" Text="Capacidad" runat="server" /></td>
-                            <td><asp:TextBox ID="txtCapacidad" CssClass="form-control" runat="server"> 
+                            <td><asp:TextBox ID="txtCapacidad" TextMode="Number" CssClass="form-control" runat="server"> 
                             </asp:TextBox></td>
 
                             <td><asp:RequiredFieldValidator ID="rfvCapacidad" runat="server"
