@@ -111,7 +111,7 @@
                             <td><asp:TextBox ID="txtPrecioTotalReservaVuelo" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                  <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                                     ErrorMessage="El Precio es requerido" ControlToValidate="txtPrecioTotalReservaVuelo" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtPrecioTotalReservaVuelo" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrFechaReservaVuelo" Text="Fecha de la Reserva del Vuelo" runat="server" /></td>

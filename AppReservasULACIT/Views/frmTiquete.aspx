@@ -121,7 +121,7 @@
                             <td><asp:TextBox ID="txtPrecioTiquete" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                  <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                                     ErrorMessage="El Precio es requerido" ControlToValidate="txtPrecioTiquete" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage="*Espacio Obligatorio*" ControlToValidate="txtPrecioTiquete" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrAlimentacion" Text="Alimentacion" runat="server" /></td>
