@@ -49,7 +49,8 @@
         </asp:GridView>
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
-        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" /> 
+        <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
     </div>
 
      <!--VENTANA MODAL -->
@@ -88,27 +89,32 @@
                             <td><asp:TextBox ID="txtCodigoMant" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrNumeroTerminalMant" Text="NumeroTerminal" runat="server"></asp:Literal></td>
+                             <td><asp:Literal ID="ltrNumeroTerminalMant" Text="Numero Terminal" runat="server"></asp:Literal></td>
                             <td><asp:TextBox TextMode="Number" ID="txtNumeroTerminalMant" runat="server" CssClass="form-control"></asp:TextBox></td>
-                             
+                              <td>
+                             <asp:RequiredFieldValidator ID="rfvNumeroTerminal" runat="server"
+                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrCodigoAero" Text="CodigoAeropuerto" runat="server"></asp:Literal></td>
-                             <td><asp:TextBox TextMode="Number" ID="txtCodigoAeroMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                             <td><asp:Literal ID="ltrCodigoAero" Text="Codigo Aeropuerto" runat="server"></asp:Literal></td>
+                              <td><asp:DropDownList ID="ddlCodigoAero" CssClass="form-control" runat="server">
+                            </asp:DropDownList></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrTiempoEspera" Text="TiempoEspera" runat="server"></asp:Literal></td>
+                             <td><asp:Literal ID="ltrTiempoEspera" Text="Tiempo Espera" runat="server"></asp:Literal></td>
                             <td><asp:TextBox TextMode="DateTimeLocal" ID="txtTiempoEsperaMant" runat="server" CssClass="form-control"></asp:TextBox></td>
-                        </tr>
+                       <td>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtTiempoEsperaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                            </tr>
                         <tr>
                              <td><asp:Literal ID="ltrTrasbordo" Text="Trasbordo" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtTrasbordo" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                  <asp:RequiredFieldValidator ID="rfvTrasbordo" runat="server"
-                                     ErrorMessage="El trasbordo es requerido" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                     ErrorMessage=" *Espacio Obligatorio" ControlToValidate="txtNumeroTerminalMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"

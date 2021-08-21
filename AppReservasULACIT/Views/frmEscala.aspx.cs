@@ -16,6 +16,9 @@ namespace AppReservasULACIT.Views
         IEnumerable<Escala> escalas = new ObservableCollection<Escala>();
         EscalaManager escalaManager = new EscalaManager();
 
+        IEnumerable<Aeropuerto> aeropuertos = new ObservableCollection<Aeropuerto>();
+        AeropuertoManager aeropuertoManager = new AeropuertoManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +39,20 @@ namespace AppReservasULACIT.Views
                 escalas = await escalaManager.ObtenerEscalas(Session["Token"].ToString());
                 gvEscalas.DataSource = escalas.ToList();
                 gvEscalas.DataBind();
+            }
+            catch (Exception exc)
+            {
+                lblStatus.Text = "Hubo un error al cargar la lista de servicios. Detalle: " + exc.Message;
+                lblStatus.Visible = true;
+            }
+            try
+            {
+                aeropuertos = await aeropuertoManager.ObtenerAeropuertos(Session["Token"].ToString());
+                ddlCodigoAero.DataSource = aeropuertos.ToList();
+                ddlCodigoAero.DataBind();
+                ddlCodigoAero.DataTextField = "ARP_CODIGO";
+                ddlCodigoAero.DataValueField = "ARP_CODIGO";
+                ddlCodigoAero.DataBind();
             }
             catch (Exception exc)
             {
@@ -83,7 +100,7 @@ namespace AppReservasULACIT.Views
                         Escala escala = new Escala()
                         {
                             ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
-                            ESC_ARP_CODIGO = Convert.ToInt32(txtCodigoAeroMant.Text),
+                            ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
                             ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
                             ESC_TRASBORDO = txtTrasbordo.Text
                             
@@ -105,7 +122,7 @@ namespace AppReservasULACIT.Views
                         {
                             ESC_CODIGO = Convert.ToInt32(txtCodigoMant.Text),
                             ESC_NUMERO_TERMINAL = Convert.ToInt32(txtNumeroTerminalMant.Text),
-                            ESC_ARP_CODIGO = Convert.ToInt32(txtCodigoAeroMant.Text),
+                            ESC_ARP_CODIGO = Convert.ToInt32(ddlCodigoAero.SelectedValue),
                             ESC_TIEMPO_ESPERA = Convert.ToDateTime(txtTiempoEsperaMant.Text),
                             ESC_TRASBORDO = txtTrasbordo.Text
                         };
@@ -140,7 +157,6 @@ namespace AppReservasULACIT.Views
             ltrTituloMantenimiento.Text = "Nueva escala";
             lblResultado.Text = string.Empty;
             txtNumeroTerminalMant.Text = string.Empty;
-            txtCodigoAeroMant.Text = string.Empty;
             txtTiempoEsperaMant.Text = string.Empty;
             txtTrasbordo.Text = string.Empty;
             
@@ -172,7 +188,7 @@ namespace AppReservasULACIT.Views
                     ltrTituloMantenimiento.Text = "Modificar escala";
                     txtCodigoMant.Text = fila.Cells[0].Text;
                     txtNumeroTerminalMant.Text = fila.Cells[1].Text;
-                    txtCodigoAeroMant.Text = fila.Cells[2].Text;
+                    ddlCodigoAero.SelectedValue = fila.Cells[2].Text;
                     txtTiempoEsperaMant.Text = fila.Cells[3].Text;
                     txtTrasbordo.Text = fila.Cells[4].Text;
                     ScriptManager.RegisterStartupScript(this,

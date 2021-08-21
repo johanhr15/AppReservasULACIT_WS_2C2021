@@ -86,7 +86,7 @@ namespace AppReservasULACIT.Views
                             ARP_CIUDAD = txtCiudadMant.Text,
                             ARP_ZONA_HORARIA = txtZonaHorariaMant.Text,
                             ARP_VISA = ddlVisaRequerida.SelectedValue,
-                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text,
+                            ARP_CONTROL_VACUNAS = ddlControlVacunas.SelectedValue,
                         };
 
                         Aeropuerto respuestaAeropuerto = await aeropuertoManager.Ingresar(aeropuerto, Session["Token"].ToString());
@@ -108,7 +108,7 @@ namespace AppReservasULACIT.Views
                             ARP_CIUDAD = txtCiudadMant.Text,
                             ARP_ZONA_HORARIA = txtZonaHorariaMant.Text,
                             ARP_VISA = ddlVisaRequerida.SelectedValue,
-                            ARP_CONTROL_VACUNAS = txtControlVacunas.Text,
+                            ARP_CONTROL_VACUNAS = ddlControlVacunas.SelectedValue,
                         };
 
                         Aeropuerto respuestaAeropuerto = await aeropuertoManager.Actualizar(aeropuerto, Session["Token"].ToString());
@@ -145,7 +145,7 @@ namespace AppReservasULACIT.Views
             txtCiudadMant.Text = string.Empty;
             txtZonaHorariaMant.Text = string.Empty;
             ddlVisaRequerida.SelectedValue = string.Empty;
-            txtControlVacunas.Text = string.Empty;
+            ddlControlVacunas.SelectedValue = string.Empty;
 
             LimpiarControles();
 
@@ -177,7 +177,7 @@ namespace AppReservasULACIT.Views
                     txtCiudadMant.Text = fila.Cells[2].Text;
                     txtZonaHorariaMant.Text = fila.Cells[3].Text;
                     ddlVisaRequerida.SelectedValue = fila.Cells[4].Text;
-                    txtControlVacunas.Text = fila.Cells[5].Text;
+                    ddlControlVacunas.SelectedValue = fila.Cells[5].Text;
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;

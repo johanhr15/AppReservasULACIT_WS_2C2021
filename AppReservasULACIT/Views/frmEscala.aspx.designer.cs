@@ -42,6 +42,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
+        /// Contrôle lblResultado.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado;
+
+        /// <summary>
         /// Contrôle ltrModalMensaje.
         /// </summary>
         /// <remarks>
@@ -123,6 +132,15 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.TextBox txtNumeroTerminalMant;
 
         /// <summary>
+        /// Contrôle rfvNumeroTerminal.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNumeroTerminal;
+
+        /// <summary>
         /// Contrôle ltrCodigoAero.
         /// </summary>
         /// <remarks>
@@ -132,13 +150,13 @@ namespace AppReservasULACIT.Views
         protected global::System.Web.UI.WebControls.Literal ltrCodigoAero;
 
         /// <summary>
-        /// Contrôle txtCodigoAeroMant.
+        /// Contrôle ddlCodigoAero.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoAeroMant;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCodigoAero;
 
         /// <summary>
         /// Contrôle ltrTiempoEspera.
@@ -157,6 +175,15 @@ namespace AppReservasULACIT.Views
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTiempoEsperaMant;
+
+        /// <summary>
+        /// Contrôle RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// Contrôle ltrTrasbordo.
@@ -184,15 +211,6 @@ namespace AppReservasULACIT.Views
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTrasbordo;
-
-        /// <summary>
-        /// Contrôle lblResultado.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado;
 
         /// <summary>
         /// Contrôle btnAceptarMant.

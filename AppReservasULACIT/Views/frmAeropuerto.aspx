@@ -49,7 +49,8 @@
         </asp:GridView>
          <asp:LinkButton type="button" OnClick="btnNuevo_Click" CssClass="btn btn-success" ID="btnNuevo"  runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
         <br />
-        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" />   
+        <asp:Label ID="lblStatus"  ForeColor="Maroon" runat="server" Visible="false" /> 
+        <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
     </div>
 
      <!--VENTANA MODAL -->
@@ -91,16 +92,22 @@
                              <td><asp:Literal ID="ltrPaisMant" Text="Pais" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtPaisMant" runat="server" CssClass="form-control"></asp:TextBox></td>
                              <td>
-                                 <asp:RequiredFieldValidator ID="rfvPais" runat="server"
-                                     ErrorMessage="El pais del aeropuerto es requerido" ControlToValidate="txtPaisMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                             <asp:RequiredFieldValidator ID="rfvPais" runat="server"
+                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtPaisMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrCiudad" Text="Ciudad" runat="server"></asp:Literal></td>
                              <td><asp:TextBox ID="txtCiudadMant" runat="server"  CssClass="form-control"></asp:TextBox></td>
+                            <td>         
+                            <asp:RequiredFieldValidator ID="rfvCuidad" runat="server"
+                             ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtCiudadMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
-                             <td><asp:Literal ID="ltrZonaHoraria" Text="ZonaHoraria" runat="server"></asp:Literal></td>
+                             <td><asp:Literal ID="ltrZonaHoraria" Text="Zona Horaria" runat="server"></asp:Literal></td>
                             <td><asp:TextBox ID="txtZonaHorariaMant" runat="server" CssClass="form-control"></asp:TextBox></td>
+                         <td>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                              ErrorMessage="  *Espacio Obligatorio" ControlToValidate="txtZonaHorariaMant" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                              <td><asp:Literal ID="ltrVisa" Text="Visa" runat="server"></asp:Literal></td>
@@ -113,11 +120,12 @@
                         </tr>
                         <tr>
                             <td><asp:Literal ID="ltrControlVacunas" Text="ControlVacunas" runat="server" /></td>
-                            <td><asp:TextBox ID="txtControlVacunas" runat="server" CssClass="form-control"></asp:TextBox></td>
-
+                            <td><asp:DropDownList ID="ddlControlVacunas" CssClass="form-control" runat="server">
+                                <asp:ListItem Selected="True" Value="Si">Si</asp:ListItem>
+                                <asp:ListItem Value="No">No</asp:ListItem>
+                            </asp:DropDownList></td>
                         </tr>
                     </table>
-                    <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
                 </div>
                 <div class="modal-footer">
                      <asp:LinkButton type="button" ID="btnAceptarMant" runat="server" OnClick="btnAceptarMant_Click"
